@@ -3,9 +3,7 @@ package ovning3;
 import java.util.Scanner;
 
 public class ticTacToe {
-	/*
-	 * 
-	 */
+	
 
 	public static void main(String[] args) {						//Här får användaren välja vilja
 		Scanner scanner = new Scanner(System.in);					//namn som skall spela. 
@@ -69,17 +67,16 @@ public class ticTacToe {
 
 		return symbols;
 	}
-
+	
 	private static void moves(char[][] gameboard, String user, String player1, String player2) {	//Metod för att lägga sin bricka.
 		Scanner scanner = new Scanner(System.in);
 		char symbol = ' ';
 																	//User avser vilken av player1 eller player2 som spelar. 
 		if (user.equals(player1)) {									//Kolla om det är player1 eller player2 som spelar. 
-			symbol = 'x';											//Och ger 'x' eller 'o' beroende vilken spelare det är.
-		} else if (user.equals(player2)) {							//
-			symbol = 'o';											//
-		}
-
+			symbol = 'x';}											//Och ger 'x' eller 'o' beroende vilken spelare det är.
+		 else if (user.equals(player2)) {							//
+			symbol = 'o';}											//
+		
 		while (true) {														//loop för att lägga sin bricka. 
 			int move = 0;													//loopen breakar efter varje omgång. 
 			try {
@@ -87,24 +84,21 @@ public class ticTacToe {
 				
 				if (move < 1 || move > 9) {									//if-sats som kollar om numret är mer eller mindre än 1-9,
 					System.out.println("Numret måste vara mellan 1-9.");	//
-					continue;												//om så är fallet börjar loopen om här.
-				}
-
+					continue;}												//om så är fallet börjar loopen om här.
+				
 				switch (move) {
 				case 1:
 					if (gameboard[0][0] == 'x' || gameboard[0][0] == 'o') {					//Kollar om rutan är upptagen.
 						System.out.println("Ruta 1 är upptagen. Försök en annan siffra.");	
-						continue;															//om upptagen ruta så börjar loopen om här.
-					}
+						continue;}															//om upptagen ruta så börjar loopen om här.
 					gameboard[0][0] = symbol;												//ger spelarens "symbol"-värde i en ruta. 
 					break;
 				case 2:
 					if (gameboard[0][2] == 'x' || gameboard[0][2] == 'o') {
 						System.out.println("Ruta 2 är upptagen. Försök en annan siffra.");
-						continue;
-					}
+						continue;}
 					gameboard[0][2] = symbol;
-					break;
+					break; 
 				case 3:
 					if (gameboard[0][4] == 'x' || gameboard[0][4] == 'o') {
 						System.out.println("Ruta 3 är upptagen. Försök en annan siffra.");
