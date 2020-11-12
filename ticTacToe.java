@@ -3,6 +3,9 @@ package ovning3;
 import java.util.Scanner;
 
 public class ticTacToe {
+	/*
+	 * 
+	 */
 
 	public static void main(String[] args) {						//Här får användaren välja vilja
 		Scanner scanner = new Scanner(System.in);					//namn som skall spela. 
