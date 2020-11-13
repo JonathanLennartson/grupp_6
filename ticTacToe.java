@@ -91,9 +91,9 @@ public class ticTacToe {
 				case 1:
 					if (gameboard[0][0] == 'x' || gameboard[0][0] == 'o') {					//Kollar om rutan är upptagen.
 						System.out.println("Ruta 1 är upptagen. Försök en annan siffra.");	
-						continue;															//om upptagen ruta så börjar loopen om här.
+						continue;															//Om upptagen ruta så börjar loopen om här.
 					}
-					gameboard[0][0] = symbol;												//ger spelarens "symbol"-värde i en ruta. 
+					gameboard[0][0] = symbol;												//Ger spelarens "symbol"-värde i en ruta. 
 					break;
 				case 2:
 					if (gameboard[0][2] == 'x' || gameboard[0][2] == 'o') {
@@ -155,10 +155,10 @@ public class ticTacToe {
 					break;
 				}
 				break;
-			} catch (Exception InputMismatchException) {				//detta fångar om något annat än en siffra blivit inmatad. 
-				System.out.println("Det måste vara ett nummer!");		//
-				scanner.nextLine();										//
-				continue;												//loopen börjar om här. 
+			} catch (Exception InputMismatchException) {				//Detta fångar om något annat än en siffra blivit inmatad. 
+				System.out.println("Det måste vara ett nummer!");		//Felmeddelande när ingen siffra matats in.
+				scanner.nextLine();										//Användaren får mata in en ny siffra att spela med. 
+				continue;												//Loopen börjar om här. 
 			}
 		}
 	}
