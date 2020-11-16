@@ -150,10 +150,10 @@ public class ticTacToe {
 					break;
 				}
 				break;
-			} catch (Exception InputMismatchException) {				//detta fångar om något annat än en siffra blivit inmatad. 
-				System.out.println("Det måste vara ett nummer!");		//
-				scanner.nextLine();										//
-				continue;												//loopen börjar om här. 
+        catch(Exception InputMismatchException){                //Detta f�ngar om n�got annat �n en siffra blivit inmatad.
+            System.out.println("Det m�ste vara ett nummer!");        //Felmeddelande n�r ingen siffra matats in.
+            scanner.nextLine();                                        //Anv�ndaren f�r mata in en ny siffra att spela med.
+            continue;}                                                //Loopen b�rjar om h�r.
 			}
 		}
 	}
