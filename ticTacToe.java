@@ -3,61 +3,60 @@ package ovning3;
 import java.util.Scanner;
 
 public class ticTacToe {
+	
 
-	public static void main(String[] args) {						//Här får användaren välja vilja
+	public static void main(String[] args) {						//HÃ¤r fÃ¥r anvÃ¤ndaren vÃ¤lja vilja
 		Scanner scanner = new Scanner(System.in);					//namn som skall spela. 
 		System.out.print("Spelare 1: ");							//
 		String player1 = scanner.nextLine();						//
 		System.out.print("Spelare 2: ");							//
 		String player2 = scanner.nextLine();						//
 			
-
 		char[][] gameboard = { { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' }, { ' ', '|', ' ', '|', ' ' },
 				{ '-', '+', '-', '+', '-' }, { ' ', '|', ' ', '|', ' ' } };
 
-		System.out.println("\nVälkomna till Tre-i-Rad " + player1 + " och " + player2
-				+ ".\nSkriv en siffra mellan 1-9 för att lägga en bricka.\n");
+		System.out.println("\nVÃ¤lkomna till Tre-i-Rad " + player1 + " och " + player2
+				+ ".\nSkriv en siffra mellan 1-9 fÃ¶r att lÃ¤gga en bricka.\n");
 
 		printGameboard(gameboard);
 		playersPlacement(player1, player2, gameboard);
-
 	}
 
 	private static void playersPlacement(String player1, String player2, char[][] gameboard) {
 		Scanner scanner = new Scanner(System.in);
-		String winner = null;										//winner få värde senare.
-		int draw = 0;												//beroende vilket värde draw får så blir det oavgjort.
+		String winner = null;										//winner fÃ¥ vÃ¤rde senare.
+		int draw = 0;												//beroende vilket vÃ¤rde draw fÃ¥r sÃ¥ blir det oavgjort.
 
 		while (true) {
-																	//Här är loopen för hela spelet som avgör vem som vinner. 
-			moves(gameboard, player1, player1, player2);			//Denna metod avgör vem som spelar och vart man lägger sin bricka.
-			printGameboard(gameboard);								//Printar ut det nya resultatet av spelbrädan.
+																	//HÃ¤r Ã¤r loopen fÃ¶r hela spelet som avgÃ¶r vem som vinner. 
+			moves(gameboard, player1, player1, player2);			//Denna metod avgÃ¶r vem som spelar och vart man lÃ¤gger sin bricka.
+			printGameboard(gameboard);								//Printar ut det nya resultatet av spelbrÃ¤dan.
 			winner = checkWinner(gameboard, player1, player2);		//Metod som kollar om player1 vunnit.
 			if (player1.equals(winner)) {							
 				System.out.println(winner + " vann spelet!");
 				break;
 			}
-			draw = checkDraw(gameboard);							//Metod för att se om det blev oavgjort. 
-			if (draw == 0) {														//Om det inte finns några whitespaces och 
-				System.out.println("\nÄsch då, ingen vann... Försök igen.");		//ingen vinst, då är det oavgjort.
+			draw = checkDraw(gameboard);							//Metod fÃ¶r att se om det blev oavgjort. 
+			if (draw == 0) {														//Om det inte finns nÃ¥gra whitespaces och 
+				System.out.println("\nÃ„sch dÃ¥, ingen vann... FÃ¶rsÃ¶k igen.");		//ingen vinst, dÃ¥ Ã¤r det oavgjort.
 				break;
 			}
 
-			moves(gameboard, player2, player1, player2);			//metod för player2.
+			moves(gameboard, player2, player1, player2);			//metod fÃ¶r player2.
 			printGameboard(gameboard);								
-			winner = checkWinner(gameboard, player1, player2);		//metod för att se om player2 har vunnit.
-			if (player2.equals(winner)) {							//Om detta stämmer har player2 vunnit.
+			winner = checkWinner(gameboard, player1, player2);		//metod fÃ¶r att se om player2 har vunnit.
+			if (player2.equals(winner)) {							//Om detta stÃ¤mmer har player2 vunnit.
 				System.out.println(winner + " vann spelet!");
 				break;
 			}
 		}
 	}
 
-	private static int checkDraw(char[][] gameboard) {				//metod för oavgjort.
+	private static int checkDraw(char[][] gameboard) {				//metod fÃ¶r oavgjort.
 		int symbols = 0;
 
-		for (int i = 0; i < gameboard.length; i++) {				//kollar om raderna är upptagna.
-			for (int j = 0; j < gameboard.length; j++) {			//kollar om kolumnerna är upptagna. 
+		for (int i = 0; i < gameboard.length; i++) {				//kollar om raderna Ã¤r upptagna.
+			for (int j = 0; j < gameboard.length; j++) {			//kollar om kolumnerna Ã¤r upptagna. 
 				if (gameboard[i][j] == ' ') {
 					symbols++;
 				}
@@ -66,87 +65,83 @@ public class ticTacToe {
 
 		return symbols;
 	}
-
-	private static void moves(char[][] gameboard, String user, String player1, String player2) {	//Metod för att lägga sin bricka.
+	
+	private static void moves(char[][] gameboard, String user, String player1, String player2) {	//Metod fÃ¶r att lÃ¤gga sin bricka.
 		Scanner scanner = new Scanner(System.in);
 		char symbol = ' ';
 																	//User avser vilken av player1 eller player2 som spelar. 
-		if (user.equals(player1)) {									//Kolla om det är player1 eller player2 som spelar. 
-			symbol = 'x';											//Och ger 'x' eller 'o' beroende vilken spelare det är.
-		} else if (user.equals(player2)) {							//
-			symbol = 'o';											//
-		}
-
-		while (true) {														//loop för att lägga sin bricka. 
-			int move = 0;													//loopen breakar efter varje omgång. 
+		if (user.equals(player1)) {									//Kolla om det Ã¤r player1 eller player2 som spelar. 
+			symbol = 'x';}											//Och ger 'x' eller 'o' beroende vilken spelare det Ã¤r.
+		 else if (user.equals(player2)) {							//
+			symbol = 'o';}											//
+		
+		while (true) {														//loop fÃ¶r att lÃ¤gga sin bricka. 
+			int move = 0;													//loopen breakar efter varje omgÃ¥ng. 
 			try {
 				move = scanner.nextInt();
 				
-				if (move < 1 || move > 9) {									//if-sats som kollar om numret är mer eller mindre än 1-9,
-					System.out.println("Numret måste vara mellan 1-9.");	//
-					continue;												//om så är fallet börjar loopen om här.
-				}
-
+				if (move < 1 || move > 9) {									//if-sats som kollar om numret Ã¤r mer eller mindre Ã¤n 1-9,
+					System.out.println("Numret mÃ¥ste vara mellan 1-9.");	//
+					continue;}												//om sÃ¥ Ã¤r fallet bÃ¶rjar loopen om hÃ¤r.
+				
 				switch (move) {
 				case 1:
-					if (gameboard[0][0] == 'x' || gameboard[0][0] == 'o') {					//Kollar om rutan är upptagen.
-						System.out.println("Ruta 1 är upptagen. Försök en annan siffra.");	
-						continue;															//Om upptagen ruta så börjar loopen om här.
-					}
-					gameboard[0][0] = symbol;												//Ger spelarens "symbol"-värde i en ruta. 
+					if (gameboard[0][0] == 'x' || gameboard[0][0] == 'o') {					//Kollar om rutan Ã¤r upptagen.
+						System.out.println("Ruta 1 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");	
+						continue;}															//om upptagen ruta sÃ¥ bÃ¶rjar loopen om hÃ¤r.
+					gameboard[0][0] = symbol;												//ger spelarens "symbol"-vÃ¤rde i en ruta. 
 					break;
 				case 2:
 					if (gameboard[0][2] == 'x' || gameboard[0][2] == 'o') {
-						System.out.println("Ruta 2 är upptagen. Försök en annan siffra.");
-						continue;
-					}
+						System.out.println("Ruta 2 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
+						continue;}
 					gameboard[0][2] = symbol;
-					break;
+					break; 
 				case 3:
 					if (gameboard[0][4] == 'x' || gameboard[0][4] == 'o') {
-						System.out.println("Ruta 3 är upptagen. Försök en annan siffra.");
+						System.out.println("Ruta 3 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
 						continue;
 					}
 					gameboard[0][4] = symbol;
 					break;
 				case 4:
 					if (gameboard[2][0] == 'x' || gameboard[2][0] == 'o') {
-						System.out.println("Ruta 4 är upptagen. Försök en annan siffra.");
+						System.out.println("Ruta 4 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
 						continue;
 					}
 					gameboard[2][0] = symbol;
 					break;
 				case 5:
 					if (gameboard[2][2] == 'x' || gameboard[2][2] == 'o') {
-						System.out.println("Ruta 5 är upptagen. Försök en annan siffra.");
+						System.out.println("Ruta 5 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
 						continue;
 					}
 					gameboard[2][2] = symbol;
 					break;
 				case 6:
 					if (gameboard[2][4] == 'x' || gameboard[2][4] == 'o') {
-						System.out.println("Ruta 6 är upptagen. Försök en annan siffra.");
+						System.out.println("Ruta 6 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
 						continue;
 					}
 					gameboard[2][4] = symbol;
 					break;
 				case 7:
 					if (gameboard[4][0] == 'x' || gameboard[4][0] == 'o') {
-						System.out.println("Ruta 7 är upptagen. Försök en annan siffra.");
+						System.out.println("Ruta 7 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
 						continue;
 					}
 					gameboard[4][0] = symbol;
 					break;
 				case 8:
 					if (gameboard[4][2] == 'x' || gameboard[4][2] == 'o') {
-						System.out.println("Ruta 8 är upptagen. Försök en annan siffra.");
+						System.out.println("Ruta 8 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
 						continue;
 					}
 					gameboard[4][2] = symbol;
 					break;
 				case 9:
 					if (gameboard[4][4] == 'x' || gameboard[4][4] == 'o') {
-						System.out.println("Ruta 9 är upptagen. Försök en annan siffra.");
+						System.out.println("Ruta 9 Ã¤r upptagen. FÃ¶rsÃ¶k en annan siffra.");
 						continue;
 					}
 					gameboard[4][4] = symbol;
@@ -155,15 +150,15 @@ public class ticTacToe {
 					break;
 				}
 				break;
-			} catch (Exception InputMismatchException) {				//Detta fångar om något annat än en siffra blivit inmatad. 
-				System.out.println("Det måste vara ett nummer!");		//Felmeddelande när ingen siffra matats in.
-				scanner.nextLine();										//Användaren får mata in en ny siffra att spela med. 
-				continue;												//Loopen börjar om här. 
+        catch(Exception InputMismatchException){                //Detta fï¿½ngar om nï¿½got annat ï¿½n en siffra blivit inmatad.
+            System.out.println("Det mï¿½ste vara ett nummer!");        //Felmeddelande nï¿½r ingen siffra matats in.
+            scanner.nextLine();                                        //Anvï¿½ndaren fï¿½r mata in en ny siffra att spela med.
+            continue;}                                                //Loopen bï¿½rjar om hï¿½r.
 			}
 		}
 	}
 	
-	private static String checkWinner(char[][] gameboard, String player1, String player2) { 	//metod som kollar om någon vunnit.
+	private static String checkWinner(char[][] gameboard, String player1, String player2) { 	//metod som kollar om nÃ¥gon vunnit.
 		String winner = null;
 
 		if (gameboard[0][0] == 'x' && gameboard[0][2] == 'x' && gameboard[0][4] == 'x'			//kollar om player1 vunnit.
@@ -189,7 +184,7 @@ public class ticTacToe {
 			winner = player2;
 		}
 
-		return winner;																			//returnerar värdet winner som 		
+		return winner;																			//returnerar vÃ¤rdet winner som 		
 	}																							//player1 eller player2.
 
 	private static void printGameboard(char[][] gameboard) {									//metod som skriver ut spelplanen 
