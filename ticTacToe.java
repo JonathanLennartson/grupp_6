@@ -158,7 +158,10 @@ public class ticTacToe {
 		}
 	}
 	
-	private static String checkWinner(char[][] gameboard, String player1, String player2) { 	//metod som kollar om någon vunnit.
+	/**
+	* metod som kollar om någon vunnit.
+	*/
+	private static String checkWinner(char[][] gameboard, String player1, String player2) { 
 		String winner = null;
 
 		if (gameboard[0][0] == 'x' && gameboard[0][2] == 'x' && gameboard[0][4] == 'x'			//kollar om player1 vunnit.
