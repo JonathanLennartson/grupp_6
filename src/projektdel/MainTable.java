@@ -65,16 +65,16 @@ public class MainTable extends Application {
 
     private void fillTableObservableListWithSampleData() {
 
-        tvObservableList.addAll(new Data(1, "app1"),
-                                new Data(2, "app2"), 
-                                new Data(3, "app3"), 
-                                new Data(4, "app4"),
-                                new Data(5, "app5"),
-                                new Data(6, "app6"),
-                                new Data(7, "app7"),
-                                new Data(8, "app8"),
-                                new Data(9, "app9"),
-                                new Data(10, "app10"));
+        tvObservableList.addAll(new Data(1, "Rosie Brennan"),
+                                new Data(2, "Tatiana Sorina"), 
+                                new Data(3, "Therese Johaug"), 
+                                new Data(4, "Natalia Nepryaeva"),
+                                new Data(5, "Nadine Fähndrich"),
+                                new Data(6, "Anamarija Lampic"),
+                                new Data(7, "Ebba Andersson"),
+                                new Data(8, "Jessica Diggins"),
+                                new Data(9, "Yulia Stupak"),
+                                new Data(10, "Frida Karlsson "));
     }
 
     private void addButtonToTable() {
