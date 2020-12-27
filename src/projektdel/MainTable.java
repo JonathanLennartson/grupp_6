@@ -28,7 +28,7 @@ public class MainTable extends Application {
     @Override
     public void start(Stage stage) {
 
-        stage.setTitle("Skidtävling!!");
+        stage.setTitle("SkidtÃ¤vling!!");
         stage.setWidth(600);
         stage.setHeight(600);
 
@@ -69,7 +69,7 @@ public class MainTable extends Application {
                                 new Data(2, "Tatiana Sorina"), 
                                 new Data(3, "Therese Johaug"), 
                                 new Data(4, "Natalia Nepryaeva"),
-                                new Data(5, "Nadine F�hndrich"),
+                                new Data(5, "Nadine Fähndrich"),
                                 new Data(6, "Anamarija Lampic"),
                                 new Data(7, "Ebba Andersson"),
                                 new Data(8, "Jessica Diggins"),
@@ -190,7 +190,6 @@ public class MainTable extends Application {
 
     }
     
-    //TODO JULIO TEST change the file.
 }
 
 
