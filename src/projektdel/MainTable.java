@@ -28,7 +28,7 @@ public class MainTable extends Application {
     @Override
     public void start(Stage stage) {
 
-        stage.setTitle("SkidtÃ¤vling!!");
+        stage.setTitle("Skidtävling!!");
         stage.setWidth(600);
         stage.setHeight(600);
 
@@ -52,7 +52,7 @@ public class MainTable extends Application {
         
 
         Scene scene = new Scene(new Group(table));
-
+        scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -86,6 +86,7 @@ public class MainTable extends Application {
                 final TableCell<Data, Void> cell = new TableCell<Data, Void>() {
 
                     private final Button btn = new Button("Start/Stop");
+                    
 
                     {
                         btn.setOnAction((ActionEvent event) -> {
@@ -125,10 +126,10 @@ public class MainTable extends Application {
             public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
                 final TableCell<Data, Void> cell = new TableCell<Data, Void>() {
 
-                    private final Button btn = new Button("Lap");
+                    private final Button btnLap = new Button("Lap");
 
                     {
-                        btn.setOnAction((ActionEvent event) -> {
+                        btnLap.setOnAction((ActionEvent event) -> {
                             Data data = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + data);
                         });
@@ -140,7 +141,7 @@ public class MainTable extends Application {
                         if (empty) {
                             setGraphic(null);
                         } else {
-                            setGraphic(btn);
+                            setGraphic(btnLap);
                         }
                     }
                 };
