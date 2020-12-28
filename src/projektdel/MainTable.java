@@ -131,6 +131,7 @@ public class MainTable extends Application {
                         btn.setOnAction((ActionEvent event) -> {
                             Data data = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + data);
+                            // TODO Chronometer for each cometitor.
                         });
                     }
 
