@@ -1,4 +1,4 @@
-package application_grupp_project;
+package projektdel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
