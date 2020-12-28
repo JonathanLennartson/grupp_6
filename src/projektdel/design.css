@@ -1,7 +1,9 @@
 .button {
 	-fx-background-color: radial-gradient(center 50% -40%, radius 200%, #00FFFF 45%, #00BFFF 50%);
     -fx-text-fill: black;
-    -fx-font-size: 10px;
+    -fx-background-radius: 12px;
+    -fx-font-size: 12px;
     -fx-padding: 5 30 5 30;
+  
     
 }

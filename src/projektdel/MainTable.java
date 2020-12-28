@@ -46,8 +46,11 @@ public class MainTable extends Application {
 
         TableColumn<Data, String> colName = new TableColumn<>("Namn");
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        
+        TableColumn<Data, Integer> colTime = new TableColumn<>("Tid");
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        table.getColumns().addAll(colId, colName);
+        table.getColumns().addAll(colId, colName, colTime);
 
         
 
@@ -85,11 +88,12 @@ public class MainTable extends Application {
             public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
                 final TableCell<Data, Void> cell = new TableCell<Data, Void>() {
 
-                    private final Button btn = new Button("Start/Stop");
+                    private final Button btn = new Button("Start");
                     
 
                     {
                         btn.setOnAction((ActionEvent event) -> {
+                        	btn.setText("Stop");
                             Data data = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + data);
                         });
