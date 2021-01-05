@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class MenyFlikar extends Application {
@@ -34,11 +34,12 @@ public class MenyFlikar extends Application {
 			selectMenuButton.setOnAction(e -> menuButtonClicked());
 
 			BorderPane layout = new BorderPane();
-			VBox menuLayout = new VBox();
+			HBox menuLayout = new HBox(40);
+
 			menuLayout.getChildren().addAll(menu, selectMenuButton);
 
 			menuLayout.setPadding(new Insets(20, 20, 20, 20));
-			layout.setLeft(menuLayout);
+			layout.setTop(menuLayout);
 
 			mainScene = new Scene(layout, 500, 200);
 			window.setOnCloseRequest(e -> {
@@ -72,12 +73,15 @@ public class MenyFlikar extends Application {
 	}
 
 	private void masStart() {
+
 	}
 
 	private void individuellStart() {
+
 	}
 
 	private void jaktStart() {
+
 	}
 
 }
