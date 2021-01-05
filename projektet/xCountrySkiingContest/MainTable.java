@@ -16,29 +16,29 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class MainTable {
+public class MainTable extends Application {
 
-    static TableView<Data> table;
-    static ObservableList<Data> tvObservableList;
+    private final TableView<Data> table = new TableView<>();
+    private final ObservableList<Data> tvObservableList = FXCollections.observableArrayList();
 
-    @SuppressWarnings("unchecked")
-	public static void show() {
-        Stage stage = new Stage();
-    	table = new TableView<>();
-    	tvObservableList = FXCollections.observableArrayList();    	
-    	
-    	stage.setTitle("Skidtävling!!");
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) {
+
+        stage.setTitle("Skidtävling!!");
         stage.setWidth(600);
         stage.setHeight(600);
 
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setPrefWidth(600);
-        table.setPrefHeight(600);
-        
+        setTableappearance();
+
         fillTableObservableListWithSampleData();
         table.setItems(tvObservableList);
         
-        addButtonToTable();        
+        addButtonToTable();
+        
         addLapButtonToTable();
 
         TableColumn<Data, Integer> colId = new TableColumn<>("StartNummer");
@@ -50,37 +50,38 @@ public class MainTable {
         TableColumn<Data, Integer> colTime = new TableColumn<>("Tid");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        table.getColumns().addAll(colId, colName, colTime);      
+        table.getColumns().addAll(colId, colName, colTime);
+
+        
 
         Scene scene = new Scene(new Group(table));
-//        scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
-//    private static void setTableappearance() {
-//        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-//        table.setPrefWidth(600);
-//        table.setPrefHeight(600);
-//    }
-
-    private static void fillTableObservableListWithSampleData() {
-
-//        tvObservableList.addAll(new Data(1, "Rosie Brennan"),
-//                                new Data(2, "Tatiana Sorina"), 
-//                                new Data(3, "Therese Johaug"), 
-//                                new Data(4, "Natalia Nepryaeva"),
-//                                new Data(5, "Nadine Fähndrich"),
-//                                new Data(6, "Anamarija Lampic"),
-//                                new Data(7, "Ebba Andersson"),
-//                                new Data(8, "Jessica Diggins"),
-//                                new Data(9, "Yulia Stupak"),
-//                                new Data(10, "Frida Karlsson "));
+    private void setTableappearance() {
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.setPrefWidth(600);
+        table.setPrefHeight(600);
     }
 
-    private static void addButtonToTable() {
-        @SuppressWarnings("unchecked")
-		TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
+    private void fillTableObservableListWithSampleData() {
+
+        tvObservableList.addAll(new Data(1, "Rosie Brennan"),
+                                new Data(2, "Tatiana Sorina"), 
+                                new Data(3, "Therese Johaug"), 
+                                new Data(4, "Natalia Nepryaeva"),
+                                new Data(5, "Nadine Fähndrich"),
+                                new Data(6, "Anamarija Lampic"),
+                                new Data(7, "Ebba Andersson"),
+                                new Data(8, "Jessica Diggins"),
+                                new Data(9, "Yulia Stupak"),
+                                new Data(10, "Frida Karlsson "));
+    }
+
+    private void addButtonToTable() {
+        TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
             @Override
@@ -121,9 +122,8 @@ public class MainTable {
 
     }
     
-    private static void addLapButtonToTable() {
-        @SuppressWarnings("rawtypes")
-		TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
+    private void addLapButtonToTable() {
+        TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
             @Override
