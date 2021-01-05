@@ -73,12 +73,15 @@ public class MenyFlikar extends Application {
 	}
 
 	private void masStart() {
+
 	}
 
 	private void individuellStart() {
+
 	}
 
 	private void jaktStart() {
+
 	}
 
 }
