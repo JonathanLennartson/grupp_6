@@ -21,7 +21,7 @@ public class MainTable {
     static TableView<Data> table;
     static ObservableList<Data> tvObservableList;
 
-    @SuppressWarnings("unchecked")
+    
 	public static void show() {
         Stage stage = new Stage();
     	table = new TableView<>();
@@ -53,33 +53,33 @@ public class MainTable {
         table.getColumns().addAll(colId, colName, colTime);      
 
         Scene scene = new Scene(new Group(table));
-//        scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
-//    private static void setTableappearance() {
-//        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-//        table.setPrefWidth(600);
-//        table.setPrefHeight(600);
-//    }
+    private static void setTableappearance() {
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.setPrefWidth(600);
+        table.setPrefHeight(600);
+    }
 
     private static void fillTableObservableListWithSampleData() {
 
-//        tvObservableList.addAll(new Data(1, "Rosie Brennan"),
-//                                new Data(2, "Tatiana Sorina"), 
-//                                new Data(3, "Therese Johaug"), 
-//                                new Data(4, "Natalia Nepryaeva"),
-//                                new Data(5, "Nadine Fähndrich"),
-//                                new Data(6, "Anamarija Lampic"),
-//                                new Data(7, "Ebba Andersson"),
-//                                new Data(8, "Jessica Diggins"),
-//                                new Data(9, "Yulia Stupak"),
-//                                new Data(10, "Frida Karlsson "));
+        tvObservableList.addAll(new Data(1, "Rosie Brennan"),
+                                new Data(2, "Tatiana Sorina"), 
+                                new Data(3, "Therese Johaug"), 
+                                new Data(4, "Natalia Nepryaeva"),
+                                new Data(5, "Nadine Fähndrich"),
+                                new Data(6, "Anamarija Lampic"),
+                                new Data(7, "Ebba Andersson"),
+                                new Data(8, "Jessica Diggins"),
+                                new Data(9, "Yulia Stupak"),
+                                new Data(10, "Frida Karlsson "));
     }
 
     private static void addButtonToTable() {
-        @SuppressWarnings("unchecked")
+        
 		TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
@@ -122,7 +122,7 @@ public class MainTable {
     }
     
     private static void addLapButtonToTable() {
-        @SuppressWarnings("rawtypes")
+        
 		TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
