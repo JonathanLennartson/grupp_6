@@ -16,6 +16,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+<<<<<<< HEAD
+public class MainTable {
+
+    static TableView<Data> table;
+    static ObservableList<Data> tvObservableList;
+
+    
+	public static void show() {
+        Stage stage = new Stage();
+    	table = new TableView<>();
+    	tvObservableList = FXCollections.observableArrayList();    	
+    	
+    	stage.setTitle("Skidtävling!!");
+=======
 public class MainTable extends Application {
 
     private final TableView<Data> table = new TableView<>();
@@ -29,6 +43,7 @@ public class MainTable extends Application {
     public void start(Stage stage) {
 
         stage.setTitle("Skidtävling!!");
+>>>>>>> f8cbd75228dddaddb8248d545a8bc107867558e6
         stage.setWidth(600);
         stage.setHeight(600);
 
@@ -60,13 +75,21 @@ public class MainTable extends Application {
         stage.show();
     }
 
+<<<<<<< HEAD
+    private static void setTableappearance() {
+=======
     private void setTableappearance() {
+>>>>>>> f8cbd75228dddaddb8248d545a8bc107867558e6
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setPrefWidth(600);
         table.setPrefHeight(600);
     }
 
+<<<<<<< HEAD
+    private static void fillTableObservableListWithSampleData() {
+=======
     private void fillTableObservableListWithSampleData() {
+>>>>>>> f8cbd75228dddaddb8248d545a8bc107867558e6
 
         tvObservableList.addAll(new Data(1, "Rosie Brennan"),
                                 new Data(2, "Tatiana Sorina"), 
@@ -80,8 +103,14 @@ public class MainTable extends Application {
                                 new Data(10, "Frida Karlsson "));
     }
 
+<<<<<<< HEAD
+    private static void addButtonToTable() {
+        
+		TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
+=======
     private void addButtonToTable() {
         TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
+>>>>>>> f8cbd75228dddaddb8248d545a8bc107867558e6
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
             @Override
@@ -122,8 +151,14 @@ public class MainTable extends Application {
 
     }
     
+<<<<<<< HEAD
+    private static void addLapButtonToTable() {
+        
+		TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
+=======
     private void addLapButtonToTable() {
         TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
+>>>>>>> f8cbd75228dddaddb8248d545a8bc107867558e6
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
             @Override
