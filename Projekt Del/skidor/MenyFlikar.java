@@ -19,17 +19,15 @@ public class MenyFlikar  {
 	static Button selectMenuButton;
 	
 	public static void show() {
-		
-
 	
 			Stage window = new Stage();
-			window.setTitle("Skid√•kart√§vling");
+			window.setTitle("SkidÂkart‰vling");
 
 			menu = new ComboBox<>();
 			menu.getItems().addAll("Individuell Start", "Masstart", "Jaktstart");
-			menu.setPromptText("VÔøΩlj Din Start-Typ");
+			menu.setPromptText("V‰lj Din Start-Typ");
 
-			selectMenuButton = new Button("VÔøΩlj");
+			selectMenuButton = new Button("V‰lj");
 			selectMenuButton.setOnAction(e -> menuButtonClicked());
 
 			BorderPane layout = new BorderPane();
@@ -48,17 +46,15 @@ public class MenyFlikar  {
 
 			window.setScene(mainScene);
 			window.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
-	private void closeProgram() {
-		Boolean answer = ConfirmBox.display("Confirm Exit", "Are you sure you want to exit? ");
-		if (answer) {
-			window.close();
-		}
-	}
+//	private void closeProgram() {
+//		Boolean answer = ConfirmBox.display("Confirm Exit", "Are you sure you want to exit? ");
+//		if (answer) {
+//			window.close();
+//		}
+//	}
 
 	private void menuButtonClicked() {
 		menu.getValue();
