@@ -73,7 +73,8 @@ public class MenyFlikar  {
 	}
 
 	private static void individuellStart() {
-
+	IndividuellStart start = new IndividuellStart();
+	start.show();
 	}
 
 	private static void jaktStart() {

@@ -106,10 +106,7 @@ public class MainTable extends Application {
         
 		TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
 
-    private void addButtonToTable() {
-        TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
-
-
+   
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
             @Override
             public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
