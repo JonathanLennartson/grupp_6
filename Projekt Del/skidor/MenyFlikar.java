@@ -21,13 +21,13 @@ public class MenyFlikar  {
 	public static void show() {
 	
 			Stage window = new Stage();
-			window.setTitle("Skidåkartävling");
+			window.setTitle("Skidï¿½kartï¿½vling");
 
 			menu = new ComboBox<>();
 			menu.getItems().addAll("Individuell Start", "Masstart", "Jaktstart");
-			menu.setPromptText("Välj Din Start-Typ");
+			menu.setPromptText("Vï¿½lj Din Start-Typ");
 
-			selectMenuButton = new Button("Välj");
+			selectMenuButton = new Button("Vï¿½lj");
 			selectMenuButton.setOnAction(e -> menuButtonClicked());
 
 			BorderPane layout = new BorderPane();
@@ -41,13 +41,13 @@ public class MenyFlikar  {
 			mainScene = new Scene(layout, 500, 200);
 			window.setOnCloseRequest(e -> {
 				e.consume();
-				closeProgram();
+				//closeProgram();
 			});
 
 			window.setScene(mainScene);
 			window.show();
 		} 
-	}
+	
 
 //	private void closeProgram() {
 //		Boolean answer = ConfirmBox.display("Confirm Exit", "Are you sure you want to exit? ");
@@ -56,7 +56,7 @@ public class MenyFlikar  {
 //		}
 //	}
 
-	private void menuButtonClicked() {
+	private static void menuButtonClicked() {
 		menu.getValue();
 		if (menu.getValue() == "Individuell Start") {
 			individuellStart();
@@ -67,15 +67,15 @@ public class MenyFlikar  {
 		}
 	}
 
-	private void masStart() {
+	private static void masStart() {
 
 	}
 
-	private void individuellStart() {
+	private static void individuellStart() {
 
 	}
 
-	private void jaktStart() {
+	private static void jaktStart() {
 
 	}
 
