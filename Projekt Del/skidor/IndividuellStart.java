@@ -26,14 +26,14 @@ public class IndividuellStart {
 		Stage stage = new Stage();
 		cM = new ChronoMeter();
 		
-		stage.setTitle("Skidtävling!!");
+		stage.setTitle("Skidtï¿½vling!!");
 		stage.setWidth(600);
 		stage.setHeight(600);
 
 		Button startBtn = new Button("Starta tÃ¤vlingen");
 		startBtn.setOnAction(e -> cM.start());
 
-		Button stopBtn = new Button("Stoppa tävlingen");
+		Button stopBtn = new Button("Stoppa tÃ¤vlingen");
 		stopBtn.setOnAction(e -> cM.stopp());
 
 		setTableappearance();
@@ -41,8 +41,9 @@ public class IndividuellStart {
 		fillTableObservableListWithSampleData();
 		table.setItems(tvObservableList);
 
-		addButtonToTable();
 		addLapButtonToTable();
+		addButtonToTable();
+		
 
 		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
 		colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
@@ -86,18 +87,18 @@ public class IndividuellStart {
 	}
 
 	private void addButtonToTable() {
-		TableColumn<Competitor, Void> colBtn = new TableColumn("Start/Stopp");
+		TableColumn<Competitor, Void> colBtn = new TableColumn("Stopp");
 
 		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
 			@Override
 			public TableCell<Competitor, Void> call(final TableColumn<Competitor, Void> param) {
 				final TableCell<Competitor, Void> cell = new TableCell<Competitor, Void>() {
 
-					private final Button btn = new Button("Start");
+					private final Button btn = new Button("Stop");
 
 					{
 						btn.setOnAction((ActionEvent event) -> {
-							btn.setText("Stop");
+							
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
 						});
