@@ -17,7 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class MainTable extends Application {
+public class MainTable1 extends Application {
 
 	private final TableView<Data> table = new TableView<>();
 	private final ObservableList<Data> tvObservableList = FXCollections.observableArrayList();
