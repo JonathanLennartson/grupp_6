@@ -30,7 +30,7 @@ public class MasStart {
         stage.setWidth(600);
         stage.setHeight(600);
         
-        Button startBtn = new Button("Starta tÃ¤vlingen");      
+        Button startBtn = new Button("Starta tävlingen");      
         
         
         setTableappearance();
