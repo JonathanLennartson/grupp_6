@@ -30,7 +30,7 @@ public class IndividuellStart  {
         stage.setWidth(600);
         stage.setHeight(600);
         
-        Button startBtn = new Button("Starta tävlingen");      
+        Button startBtn = new Button("Starta tÃ¤vlingen");      
         startBtn.setOnAction(e -> Timer2.show());        
         
         setTableappearance();
