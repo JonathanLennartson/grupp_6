@@ -10,6 +10,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -30,7 +31,8 @@ public class IndividuellStart  {
         stage.setHeight(600);
         
         Button startBtn = new Button("Starta tävlingen");      
-        
+        startBtn.setOnAction(e -> Timer2.show());
+        Timer2 time = new Timer2();
         
         setTableappearance();
 
@@ -55,11 +57,9 @@ public class IndividuellStart  {
         
         table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
         
-
         VBox vBox = new VBox(20);
         vBox.getChildren().addAll(startBtn, table);
-        
-        
+                
         Scene scene = new Scene(new Group(vBox));
         scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
         stage.setScene(scene);
