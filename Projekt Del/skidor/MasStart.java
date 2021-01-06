@@ -20,12 +20,12 @@ public class MasStart {
 	
     private final TableView<Competitor> table = new TableView<>();
     private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
-   
+    ChronoMeter cM;
  
     public void show() {
     	
     	Stage stage = new Stage();
-    	ChronoMeter cM = new ChronoMeter();
+    	cM = new ChronoMeter();
     	
     	
         stage.setTitle("Skidtävling!!");
@@ -111,6 +111,12 @@ public class MasStart {
                         
                         	Competitor competitor = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + competitor.getName());
+                            cM.setTimerTid();
+                            competitor.setTime(cM.getTimerTid());
+                            System.out.println(competitor.getTime());
+                            table.getItems().remove(competitor);
+                            table.getItems().add(competitor);
+                            
                         });
                     }
 
@@ -149,8 +155,15 @@ public class MasStart {
 
                     {
                         btnLap.setOnAction((ActionEvent event) -> {
-                        	Competitor competitor = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + competitor);
+                        	
+                        	Competitor competitor = getTableView().getItems().get(getIndex());   
+                            System.out.println("selectedData: " + competitor.getName());
+                            cM.setTimerTid();
+                            competitor.setLapTime(cM.getTimerTid());
+                            System.out.println(competitor.getTime());
+                            table.getItems().remove(competitor);
+                            table.getItems().add(competitor);
+                            
                         });
                     }
 

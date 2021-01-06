@@ -15,157 +15,150 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class IndividuellStart  {
+public class IndividuellStart {
 
-    private final TableView<Competitor> table = new TableView<>();
-    private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
+	private final TableView<Competitor> table = new TableView<>();
+	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
+	ChronoMeter cM;
+	
+	public void show() {
 
-   
- 
-    public void show() {
-    	
-    	Stage stage = new Stage();
-    	
-        stage.setTitle("Skidtävling!!");
-        stage.setWidth(600);
-        stage.setHeight(600);
-        
-        Button startBtn = new Button("Starta tävlingen");      
-        startBtn.setOnAction(e -> Timer2.show());        
-        
-        setTableappearance();
+		Stage stage = new Stage();
+		cM = new ChronoMeter();
+		
+		stage.setTitle("Skidt�vling!!");
+		stage.setWidth(600);
+		stage.setHeight(600);
 
-        fillTableObservableListWithSampleData();
-        table.setItems(tvObservableList);
-        
-        addButtonToTable();        
-        addLapButtonToTable();
+		Button startBtn = new Button("Starta tävlingen");
+		startBtn.setOnAction(e -> cM.start());
 
-        TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
-        colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
+		Button stopBtn = new Button("Stoppa t�vlingen");
+		stopBtn.setOnAction(e -> cM.stopp());
 
-        TableColumn<Competitor, String> colName = new TableColumn<>("Namn");
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        
-        TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
-        colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
-        
-        TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
-        colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        
-        
-        table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
+		setTableappearance();
+
+		fillTableObservableListWithSampleData();
+		table.setItems(tvObservableList);
+
+		addButtonToTable();
+		addLapButtonToTable();
+
+		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
+		colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
+
+		TableColumn<Competitor, String> colName = new TableColumn<>("Namn");
+		colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
+		colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
+
+		TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
+		colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+		table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
+
+		HBox hBox = new HBox(20);
+        hBox.getChildren().addAll(startBtn, stopBtn, cM);
         
         VBox vBox = new VBox(20);
-        vBox.getChildren().addAll(startBtn, table);
-                
-        Scene scene = new Scene(new Group(vBox));
-        scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
+        vBox.getChildren().addAll(hBox, table);
 
-    private void setTableappearance() {
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setPrefWidth(600);
-        table.setPrefHeight(600);
-    }
+		Scene scene = new Scene(new Group(vBox));
+		scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
 
-    private void fillTableObservableListWithSampleData() {
+	private void setTableappearance() {
+		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+		table.setPrefWidth(600);
+		table.setPrefHeight(600);
+	}
 
-        tvObservableList.addAll(new Competitor(1, "Rosie Brennan"),
-                                new Competitor(2, "Tatiana Sorina"), 
-                                new Competitor(3, "Therese Johaug"), 
-                                new Competitor(4, "Natalia Nepryaeva"),
-                                new Competitor(5, "Nadine Fähndrich"),
-                                new Competitor(6, "Anamarija Lampic"),
-                                new Competitor(7, "Ebba Andersson"),
-                                new Competitor(8, "Jessica Diggins"),
-                                new Competitor(9, "Yulia Stupak"),
-                                new Competitor(10, "Frida Karlsson "));
-    }
+	private void fillTableObservableListWithSampleData() {
 
-    private void addButtonToTable() {
-        TableColumn<Competitor, Void> colBtn = new TableColumn("Start/Stopp");
+		tvObservableList.addAll(new Competitor(1, "Rosie Brennan"), new Competitor(2, "Tatiana Sorina"),
+				new Competitor(3, "Therese Johaug"), new Competitor(4, "Natalia Nepryaeva"),
+				new Competitor(5, "Nadine Fähndrich"), new Competitor(6, "Anamarija Lampic"),
+				new Competitor(7, "Ebba Andersson"), new Competitor(8, "Jessica Diggins"),
+				new Competitor(9, "Yulia Stupak"), new Competitor(10, "Frida Karlsson "));
+	}
 
-        Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
-            @Override
-            public TableCell<Competitor, Void> call(final TableColumn<Competitor, Void> param) {
-                final TableCell<Competitor, Void> cell = new TableCell<Competitor, Void>() {
+	private void addButtonToTable() {
+		TableColumn<Competitor, Void> colBtn = new TableColumn("Start/Stopp");
 
-                    private final Button btn = new Button("Start");
-                    
+		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
+			@Override
+			public TableCell<Competitor, Void> call(final TableColumn<Competitor, Void> param) {
+				final TableCell<Competitor, Void> cell = new TableCell<Competitor, Void>() {
 
-                    {
-                        btn.setOnAction((ActionEvent event) -> {
-                        	btn.setText("Stop");
-                        	Competitor competitor = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + competitor.getName());
-                        });
-                    }
+					private final Button btn = new Button("Start");
 
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-        
-        
-        
+					{
+						btn.setOnAction((ActionEvent event) -> {
+							btn.setText("Stop");
+							Competitor competitor = getTableView().getItems().get(getIndex());
+							System.out.println("selectedData: " + competitor.getName());
+						});
+					}
 
-        colBtn.setCellFactory(cellFactory);
+					@Override
+					public void updateItem(Void item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(btn);
+						}
+					}
+				};
+				return cell;
+			}
+		};
 
-        table.getColumns().add(colBtn);
+		colBtn.setCellFactory(cellFactory);
 
-    }
-    
-    private void addLapButtonToTable() {
-        TableColumn<Competitor, Void> colLap = new TableColumn("Mellantid");
+		table.getColumns().add(colBtn);
 
-        Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
-            @Override
-            public TableCell<Competitor, Void> call(final TableColumn<Competitor, Void> param) {
-                final TableCell<Competitor, Void> cell = new TableCell<Competitor, Void>() {
+	}
 
-                    private final Button btnLap = new Button("Lap");
+	private void addLapButtonToTable() {
+		TableColumn<Competitor, Void> colLap = new TableColumn("Mellantid");
 
-                    {
-                        btnLap.setOnAction((ActionEvent event) -> {
-                        	Competitor competitor = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + competitor);
-                        });
-                    }
+		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
+			@Override
+			public TableCell<Competitor, Void> call(final TableColumn<Competitor, Void> param) {
+				final TableCell<Competitor, Void> cell = new TableCell<Competitor, Void>() {
 
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btnLap);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-        
-        
-        
+					private final Button btnLap = new Button("Lap");
 
-        colLap.setCellFactory(cellFactory);
+					{
+						btnLap.setOnAction((ActionEvent event) -> {
+							Competitor competitor = getTableView().getItems().get(getIndex());
+							System.out.println("selectedData: " + competitor);
+						});
+					}
 
-        table.getColumns().add(colLap);
+					@Override
+					public void updateItem(Void item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(btnLap);
+						}
+					}
+				};
+				return cell;
+			}
+		};
 
-    }
+		colLap.setCellFactory(cellFactory);
+
+		table.getColumns().add(colLap);
+
+	}
 
 //    public class Data {
 //
@@ -199,6 +192,5 @@ public class IndividuellStart  {
 //        }
 //
 //    }
-    
-}
 
+}

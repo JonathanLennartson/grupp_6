@@ -31,7 +31,7 @@ public class ChronoMeter extends Pane {
 	public ChronoMeter() {
 
 		// TODO
-		label.setFont(new Font("Algerian", 75));
+		label.setFont(new Font("Arial", 40));
 		getChildren().add(label);
 
 		timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> timelabel()));
@@ -78,7 +78,7 @@ public class ChronoMeter extends Pane {
 
 	}
 
-	public static void reset() {
+	public void reset() {
 
 		milliSekunder = 0;
 		sekunder = 0;
@@ -88,13 +88,13 @@ public class ChronoMeter extends Pane {
 
 	}
 
-	public static String getTimerTid() {
+	public String getTimerTid() {
 
 		return label.getText();
 
 	}
 
-	public static void setTimerTid() {
+	public void setTimerTid() {
 
 		label.getText();
 

@@ -4,8 +4,9 @@ public class Competitor {
 	
 	private int nr;
 	private String name;
-	private int lapTime;
-	private int time;
+	private String lapTime;
+	private String time;
+	private ChronoMeter cM;
 	
 	public Competitor (int nr, String name) {
 		this.nr = nr;
@@ -28,25 +29,25 @@ public class Competitor {
 		this.name = name;
 	}
 
-	public int getLapTime() {
+	public String getLapTime() {
 		return lapTime;
 	}
 
-	public void setLapTime(int lapTime) {
+	public void setLapTime(String lapTime) {
 		this.lapTime = lapTime;
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return time;
-	}
-	
+	}	
 
-	public void setTime(int time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
-	
-	
-	
-	
+
+	public ChronoMeter getcM() {
+		cM = new ChronoMeter();
+		return cM;
+	}	
 
 }
