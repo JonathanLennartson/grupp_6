@@ -1,8 +1,5 @@
 package skidor;
 
-import javafx.application.Application;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,49 +10,57 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class IndividuellStart  {
 
-    private final TableView<Data> table = new TableView<>();
-    private final ObservableList<Data> tvObservableList = FXCollections.observableArrayList();
+    private final TableView<Competitor> table = new TableView<>();
+    private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
 
    
-
-    
+ 
     public void show() {
-
     	
     	Stage stage = new Stage();
     	
         stage.setTitle("Skidtävling!!");
         stage.setWidth(600);
         stage.setHeight(600);
-
+        
+        Button startBtn = new Button("Starta t�vlingen");      
+        
+        
         setTableappearance();
 
         fillTableObservableListWithSampleData();
         table.setItems(tvObservableList);
         
-        addButtonToTable();
-        
+        addButtonToTable();        
         addLapButtonToTable();
 
-        TableColumn<Data, Integer> colId = new TableColumn<>("StartNummer");
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
+        colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
 
-        TableColumn<Data, String> colName = new TableColumn<>("Namn");
+        TableColumn<Competitor, String> colName = new TableColumn<>("Namn");
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         
-        TableColumn<Data, Integer> colTime = new TableColumn<>("Tid");
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        table.getColumns().addAll(colId, colName, colTime);
-
+        TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
+        colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
+        
+        TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
+        colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        
+        
+        table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
         
 
-        Scene scene = new Scene(new Group(table));
+        VBox vBox = new VBox(20);
+        vBox.getChildren().addAll(startBtn, table);
+        
+        
+        Scene scene = new Scene(new Group(vBox));
         scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
@@ -69,25 +74,25 @@ public class IndividuellStart  {
 
     private void fillTableObservableListWithSampleData() {
 
-        tvObservableList.addAll(new Data(1, "Rosie Brennan"),
-                                new Data(2, "Tatiana Sorina"), 
-                                new Data(3, "Therese Johaug"), 
-                                new Data(4, "Natalia Nepryaeva"),
-                                new Data(5, "Nadine Fähndrich"),
-                                new Data(6, "Anamarija Lampic"),
-                                new Data(7, "Ebba Andersson"),
-                                new Data(8, "Jessica Diggins"),
-                                new Data(9, "Yulia Stupak"),
-                                new Data(10, "Frida Karlsson "));
+        tvObservableList.addAll(new Competitor(1, "Rosie Brennan"),
+                                new Competitor(2, "Tatiana Sorina"), 
+                                new Competitor(3, "Therese Johaug"), 
+                                new Competitor(4, "Natalia Nepryaeva"),
+                                new Competitor(5, "Nadine Fähndrich"),
+                                new Competitor(6, "Anamarija Lampic"),
+                                new Competitor(7, "Ebba Andersson"),
+                                new Competitor(8, "Jessica Diggins"),
+                                new Competitor(9, "Yulia Stupak"),
+                                new Competitor(10, "Frida Karlsson "));
     }
 
     private void addButtonToTable() {
-        TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
+        TableColumn<Competitor, Void> colBtn = new TableColumn("Start/Stopp");
 
-        Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
+        Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
             @Override
-            public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
-                final TableCell<Data, Void> cell = new TableCell<Data, Void>() {
+            public TableCell<Competitor, Void> call(final TableColumn<Competitor, Void> param) {
+                final TableCell<Competitor, Void> cell = new TableCell<Competitor, Void>() {
 
                     private final Button btn = new Button("Start");
                     
@@ -95,8 +100,8 @@ public class IndividuellStart  {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                         	btn.setText("Stop");
-                            Data data = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + data);
+                        	Competitor competitor = getTableView().getItems().get(getIndex());
+                            System.out.println("selectedData: " + competitor);
                         });
                     }
 
@@ -124,19 +129,19 @@ public class IndividuellStart  {
     }
     
     private void addLapButtonToTable() {
-        TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
+        TableColumn<Competitor, Void> colLap = new TableColumn("Mellantid");
 
-        Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
+        Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
             @Override
-            public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
-                final TableCell<Data, Void> cell = new TableCell<Data, Void>() {
+            public TableCell<Competitor, Void> call(final TableColumn<Competitor, Void> param) {
+                final TableCell<Competitor, Void> cell = new TableCell<Competitor, Void>() {
 
                     private final Button btnLap = new Button("Lap");
 
                     {
                         btnLap.setOnAction((ActionEvent event) -> {
-                            Data data = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + data);
+                        	Competitor competitor = getTableView().getItems().get(getIndex());
+                            System.out.println("selectedData: " + competitor);
                         });
                     }
 
@@ -163,38 +168,38 @@ public class IndividuellStart  {
 
     }
 
-    public class Data {
-
-        private int id;
-        private String name;
-
-        private Data(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int ID) {
-            this.id = ID;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String nme) {
-            this.name = nme;
-        }
-
-        @Override
-        public String toString() {
-            return "id: " + id + " - " + "name: " + name;
-        }
-
-    }
+//    public class Data {
+//
+//        private int id;
+//        private String name;
+//
+//        private Data(int id, String name) {
+//            this.id = id;
+//            this.name = name;
+//        }
+//
+//        public int getId() {
+//            return id;
+//        }
+//
+//        public void setId(int ID) {
+//            this.id = ID;
+//        }
+//
+//        public String getName() {
+//            return name;
+//        }
+//
+//        public void setName(String nme) {
+//            this.name = nme;
+//        }
+//
+//        @Override
+//        public String toString() {
+//            return "id: " + id + " - " + "name: " + name;
+//        }
+//
+//    }
     
 }
 

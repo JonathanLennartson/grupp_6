@@ -32,6 +32,7 @@ public class ConfirmBox {
 			answer = false;
 			window.close();
 		});
+		
 
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(label, yesButton, noButton);
