@@ -31,8 +31,7 @@ public class IndividuellStart  {
         stage.setHeight(600);
         
         Button startBtn = new Button("Starta tävlingen");      
-        startBtn.setOnAction(e -> Timer2.show());
-        Timer2 time = new Timer2();
+        startBtn.setOnAction(e -> Timer2.show());        
         
         setTableappearance();
 
@@ -101,7 +100,7 @@ public class IndividuellStart  {
                         btn.setOnAction((ActionEvent event) -> {
                         	btn.setText("Stop");
                         	Competitor competitor = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + competitor);
+                            System.out.println("selectedData: " + competitor.getName());
                         });
                     }
 
