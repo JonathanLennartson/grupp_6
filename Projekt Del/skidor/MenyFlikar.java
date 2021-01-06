@@ -19,9 +19,10 @@ public class MenyFlikar  {
 	static Button selectMenuButton;
 	static Stage window = new Stage();
 	
-	public static void show() {
 	
-			
+	public void show() {
+	
+		
 			window.setTitle("Skidåkartävling");
 
 			menu = new ComboBox<>();
@@ -40,11 +41,13 @@ public class MenyFlikar  {
 			layout.setTop(menuLayout);
 
 			mainScene = new Scene(layout, 500, 200);
+			mainScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 			window.setOnCloseRequest(e -> {
 				e.consume();
 				closeProgram();
 			});
-
+			
+			
 			window.setScene(mainScene);
 			window.show();
 		} 
