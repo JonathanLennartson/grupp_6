@@ -29,7 +29,7 @@ public class IndividuellStart  {
         stage.setWidth(600);
         stage.setHeight(600);
         
-        Button startBtn = new Button("Starta tävlingen");      
+        Button startBtn = new Button("Starta tÃ¤vlingen");      
         
         
         setTableappearance();
@@ -101,7 +101,7 @@ public class IndividuellStart  {
                         btn.setOnAction((ActionEvent event) -> {
                         	btn.setText("Stop");
                         	Competitor competitor = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + competitor);
+                            System.out.println("selectedData: " + competitor.getName());
                         });
                     }
 
