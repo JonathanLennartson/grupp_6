@@ -69,16 +69,18 @@ public class MenyFlikar  {
 	}
 
 	private static void masStart() {
-
+		MasStart mStart = new MasStart();
+		mStart.show();
 	}
 
 	private static void individuellStart() {
-	IndividuellStart start = new IndividuellStart();
-	start.show();
+		IndividuellStart start = new IndividuellStart();
+		start.show();
 	}
 
 	private static void jaktStart() {
-
+			JaktStart jStart = new JaktStart();
+			jStart.show();
 	}
 
 }
