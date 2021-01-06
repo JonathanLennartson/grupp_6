@@ -10,6 +10,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -19,19 +20,24 @@ public class MasStart {
 	
     private final TableView<Competitor> table = new TableView<>();
     private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
-
    
  
     public void show() {
     	
     	Stage stage = new Stage();
+    	ChronoMeter cM = new ChronoMeter();
+    	
     	
         stage.setTitle("SkidtÃ¤vling!!");
         stage.setWidth(600);
         stage.setHeight(600);
         
         Button startBtn = new Button("Starta tävlingen");      
+        startBtn.setOnAction(e -> cM.start());
         
+        Button stopBtn = new Button("Stoppa tävlingen");
+        stopBtn.setOnAction(e -> cM.stopp());
+                
         
         setTableappearance();
 
@@ -56,9 +62,11 @@ public class MasStart {
         
         table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
         
-
+        HBox hBox = new HBox(20);
+        hBox.getChildren().addAll(startBtn, stopBtn, cM);
+        
         VBox vBox = new VBox(20);
-        vBox.getChildren().addAll(startBtn, table);
+        vBox.getChildren().addAll(hBox, table);
         
         
         Scene scene = new Scene(new Group(vBox));
@@ -102,7 +110,7 @@ public class MasStart {
                         btn.setOnAction((ActionEvent event) -> {
                         
                         	Competitor competitor = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + competitor);
+                            System.out.println("selectedData: " + competitor.getName());
                         });
                     }
 
