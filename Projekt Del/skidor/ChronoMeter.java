@@ -31,7 +31,9 @@ public class ChronoMeter extends Pane {
 	public ChronoMeter() {
 
 		// TODO
-		label.setFont(new Font("Arial", 40));
+
+		label.setFont(new Font("Comic Sans MS", 40));
+
 		getChildren().add(label);
 
 		timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> timelabel()));

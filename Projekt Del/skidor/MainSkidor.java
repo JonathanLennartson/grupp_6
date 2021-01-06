@@ -11,7 +11,8 @@ public class MainSkidor extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        MenyFlikar.show();
+        MenyFlikar first = new MenyFlikar();
+    	first.show();
     }
 
 }
