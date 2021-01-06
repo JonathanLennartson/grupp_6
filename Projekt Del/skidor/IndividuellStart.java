@@ -1,4 +1,4 @@
-package xCountrySkiingContest;
+package skidor;
 
 import javafx.application.Application;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -16,34 +16,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-
-public class MainTable {
-
-    static TableView<Data> table;
-    static ObservableList<Data> tvObservableList;
-
-    
-	public static void show() {
-        Stage stage = new Stage();
-    	table = new TableView<>();
-    	tvObservableList = FXCollections.observableArrayList();    	
-    	
-    	stage.setTitle("Skidtävling!!");
-
-public class MainTable extends Application {
+public class IndividuellStart  {
 
     private final TableView<Data> table = new TableView<>();
     private final ObservableList<Data> tvObservableList = FXCollections.observableArrayList();
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+   
 
-    @Override
-    public void start(Stage stage) {
+    
+    public void show() {
 
+    	
+    	Stage stage = new Stage();
+    	
         stage.setTitle("Skidtävling!!");
-
         stage.setWidth(600);
         stage.setHeight(600);
 
@@ -75,19 +61,13 @@ public class MainTable extends Application {
         stage.show();
     }
 
-    private static void setTableappearance() {
     private void setTableappearance() {
-
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setPrefWidth(600);
         table.setPrefHeight(600);
     }
 
-
-    private static void fillTableObservableListWithSampleData() {
-
     private void fillTableObservableListWithSampleData() {
-
 
         tvObservableList.addAll(new Data(1, "Rosie Brennan"),
                                 new Data(2, "Tatiana Sorina"), 
@@ -101,12 +81,9 @@ public class MainTable extends Application {
                                 new Data(10, "Frida Karlsson "));
     }
 
+    private void addButtonToTable() {
+        TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
 
-    private static void addButtonToTable() {
-        
-		TableColumn<Data, Void> colBtn = new TableColumn("Start/Stopp");
-
-   
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
             @Override
             public TableCell<Data, Void> call(final TableColumn<Data, Void> param) {
@@ -146,14 +123,8 @@ public class MainTable extends Application {
 
     }
     
-
-    private static void addLapButtonToTable() {
-        
-		TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
-
     private void addLapButtonToTable() {
         TableColumn<Data, Void> colLap = new TableColumn("Mellantid");
-
 
         Callback<TableColumn<Data, Void>, TableCell<Data, Void>> cellFactory = new Callback<TableColumn<Data, Void>, TableCell<Data, Void>>() {
             @Override
@@ -166,7 +137,6 @@ public class MainTable extends Application {
                         btnLap.setOnAction((ActionEvent event) -> {
                             Data data = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + data);
-                            // TODO Chronometer for each cometitor.
                         });
                     }
 
@@ -227,6 +197,4 @@ public class MainTable extends Application {
     }
     
 }
-
-
 
