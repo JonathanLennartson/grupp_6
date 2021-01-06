@@ -33,8 +33,15 @@ public class IndividuellStart {
 		Button startBtn = new Button("Starta tävlingen");
 		startBtn.setOnAction(e -> cM.start());
 
-		Button stopBtn = new Button("Stoppa tävlingen");
-		stopBtn.setOnAction(e -> cM.stopp());
+
+		
+		Button stopBtn = new Button("Stoppa t�vlingen");
+		stopBtn.setOnAction(e -> {
+        	cM.stopp();
+        	cM.reset();
+        });
+		
+
 
 		setTableappearance();
 
