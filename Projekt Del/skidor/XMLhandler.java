@@ -1,4 +1,4 @@
-package xCountrySkiingContest;
+package skidor;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;

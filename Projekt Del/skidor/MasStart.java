@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import xCountrySkiingContest.XMLhandler;
 
 public class MasStart {
 	
@@ -39,6 +40,7 @@ public class MasStart {
         stopBtn.setOnAction(e -> {
         	cM.stopp();
         	cM.reset();
+        	XMLhandler.encode(Competitor);
         });
                 
         
