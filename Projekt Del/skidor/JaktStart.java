@@ -33,7 +33,7 @@ public class JaktStart {
         Button startBtn = new Button("Starta tävlingen");
 		startBtn.setOnAction(e -> cM.start());
 
-		Button stopBtn = new Button("Stoppa t�vlingen");
+		Button stopBtn = new Button("Stoppa tävlingen");
 		stopBtn.setOnAction(e -> {
         	cM.stopp();
         	cM.reset();
@@ -45,8 +45,9 @@ public class JaktStart {
         fillTableObservableListWithSampleData();
         table.setItems(tvObservableList);
         
-        addButtonToTable();        
         addLapButtonToTable();
+        addButtonToTable();        
+        
 
         TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
         colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
