@@ -33,10 +33,10 @@ public class MasStart {
         stage.setWidth(600);
         stage.setHeight(600);
         
-        Button startBtn = new Button("Starta tävlingen");      
+        Button startBtn = new Button("Starta tï¿½vlingen");      
         startBtn.setOnAction(e -> cM.start());
         
-        Button stopBtn = new Button("Stoppa tävlingen");
+        Button stopBtn = new Button("Stoppa tï¿½vlingen");
         stopBtn.setOnAction(e -> {
         	cM.stopp();
         	cM.reset();
@@ -49,8 +49,9 @@ public class MasStart {
         fillTableObservableListWithSampleData();
         table.setItems(tvObservableList);
         
-        addButtonToTable();        
         addLapButtonToTable();
+        addButtonToTable();        
+        
 
         TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
         colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
