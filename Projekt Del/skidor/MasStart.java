@@ -1,5 +1,7 @@
 package skidor;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +22,7 @@ public class MasStart {
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
 	ChronoMeter cM;
-
+	ArrayList<Competitor> aL = new ArrayList();
 	public void show() {
 
 		Stage stage = new Stage();
@@ -37,7 +39,10 @@ public class MasStart {
 		stopBtn.setOnAction(e -> {
 			cM.stopp();
 			cM.reset();
-			// XMLhandler.encode(Competitor);
+			for (Competitor competitor : tvObservableList) {
+				aL.add(competitor);
+			}
+			XMLhandler.encode(aL);
 		});
 
 		setTableappearance();
@@ -82,11 +87,15 @@ public class MasStart {
 
 	private void fillTableObservableListWithSampleData() {
 
-		tvObservableList.addAll(new Competitor(1, "Rosie Brennan"), new Competitor(2, "Tatiana Sorina"),
-				new Competitor(3, "Therese Johaug"), new Competitor(4, "Natalia Nepryaeva"),
-				new Competitor(5, "Nadine Fähndrich"), new Competitor(6, "Anamarija Lampic"),
-				new Competitor(7, "Ebba Andersson"), new Competitor(8, "Jessica Diggins"),
-				new Competitor(9, "Yulia Stupak"), new Competitor(10, "Frida Karlsson "));
+		XMLhandler.decode();
+		for (Competitor competitor : XMLhandler.list) {
+			tvObservableList.addAll(competitor);
+		}
+		for (Competitor competitor : tvObservableList) {
+			competitor.setLapTime("0");
+			competitor.setTime("0");
+		}
+		
 	}
 
 	private void addButtonToTable() {

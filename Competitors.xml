@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="14.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:12:367</string>
+    </void>
+    <void property="name">
+     <string>Rosie Brennan</string>
+    </void>
+    <void property="nr">
+     <int>1</int>
+    </void>
+    <void property="time">
+     <string>00:22:543</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:13:072</string>
+    </void>
+    <void property="name">
+     <string>Tatiana Sorina</string>
+    </void>
+    <void property="nr">
+     <int>2</int>
+    </void>
+    <void property="time">
+     <string>00:22:719</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:13:216</string>
+    </void>
+    <void property="name">
+     <string>Therese Johaug</string>
+    </void>
+    <void property="nr">
+     <int>3</int>
+    </void>
+    <void property="time">
+     <string>00:22:879</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:13:552</string>
+    </void>
+    <void property="name">
+     <string>Natalia Nepryaeva</string>
+    </void>
+    <void property="nr">
+     <int>4</int>
+    </void>
+    <void property="time">
+     <string>00:23:039</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:13:696</string>
+    </void>
+    <void property="name">
+     <string>Nadine Fähndrich</string>
+    </void>
+    <void property="nr">
+     <int>5</int>
+    </void>
+    <void property="time">
+     <string>00:23:215</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:13:872</string>
+    </void>
+    <void property="name">
+     <string>Anamarija Lampic</string>
+    </void>
+    <void property="nr">
+     <int>6</int>
+    </void>
+    <void property="time">
+     <string>00:23:375</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:14:016</string>
+    </void>
+    <void property="name">
+     <string>Ebba Andersson</string>
+    </void>
+    <void property="nr">
+     <int>7</int>
+    </void>
+    <void property="time">
+     <string>00:23:535</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:14:192</string>
+    </void>
+    <void property="name">
+     <string>Jessica Diggins</string>
+    </void>
+    <void property="nr">
+     <int>8</int>
+    </void>
+    <void property="time">
+     <string>00:23:711</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:14:368</string>
+    </void>
+    <void property="name">
+     <string>Yulia Stupak</string>
+    </void>
+    <void property="nr">
+     <int>9</int>
+    </void>
+    <void property="time">
+     <string>00:23:871</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="lapTime">
+     <string>00:14:528</string>
+    </void>
+    <void property="name">
+     <string>Frida Karlsson</string>
+    </void>
+    <void property="nr">
+     <int>10</int>
+    </void>
+    <void property="time">
+     <string>00:24:367</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

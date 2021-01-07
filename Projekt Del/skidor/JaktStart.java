@@ -86,17 +86,13 @@ public class JaktStart {
 
     private void fillTableObservableListWithSampleData() {
 
-        tvObservableList.addAll(new Competitor(1, "Rosie Brennan"),
-                                new Competitor(2, "Tatiana Sorina"), 
-                                new Competitor(3, "Therese Johaug"), 
-                                new Competitor(4, "Natalia Nepryaeva"),
-                                new Competitor(5, "Nadine Fähndrich"),
-                                new Competitor(6, "Anamarija Lampic"),
-                                new Competitor(7, "Ebba Andersson"),
-                                new Competitor(8, "Jessica Diggins"),
-                                new Competitor(9, "Yulia Stupak"),
-                                new Competitor(10, "Frida Karlsson "));
+    	XMLhandler.decode();
+		for (Competitor competitor : XMLhandler.list) {
+			tvObservableList.addAll(competitor);
+		}
+		
     }
+    	
 
     private void addButtonToTable() {
         TableColumn<Competitor, Void> colBtn = new TableColumn("Start/Stopp");

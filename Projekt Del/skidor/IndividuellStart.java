@@ -85,13 +85,16 @@ public class IndividuellStart {
 	}
 
 	private void fillTableObservableListWithSampleData() {
-
-		tvObservableList.addAll(new Competitor(1, "Rosie Brennan"), new Competitor(2, "Tatiana Sorina"),
-				new Competitor(3, "Therese Johaug"), new Competitor(4, "Natalia Nepryaeva"),
-				new Competitor(5, "Nadine Fähndrich"), new Competitor(6, "Anamarija Lampic"),
-				new Competitor(7, "Ebba Andersson"), new Competitor(8, "Jessica Diggins"),
-				new Competitor(9, "Yulia Stupak"), new Competitor(10, "Frida Karlsson "));
+		XMLhandler.decode();
+		for (Competitor competitor : XMLhandler.list) {
+			tvObservableList.addAll(competitor);
+		}
+		for (Competitor competitor : tvObservableList) {
+			competitor.setLapTime("0");
+			competitor.setTime("0");
+		}
 	}
+		
 
 	private void addButtonToTable() {
 		TableColumn<Competitor, Void> colBtn = new TableColumn("Stopp");
@@ -167,38 +170,5 @@ public class IndividuellStart {
 		table.getColumns().add(colLap);
 
 	}
-
-//    public class Data {
-//
-//        private int id;
-//        private String name;
-//
-//        private Data(int id, String name) {
-//            this.id = id;
-//            this.name = name;
-//        }
-//
-//        public int getId() {
-//            return id;
-//        }
-//
-//        public void setId(int ID) {
-//            this.id = ID;
-//        }
-//
-//        public String getName() {
-//            return name;
-//        }
-//
-//        public void setName(String nme) {
-//            this.name = nme;
-//        }
-//
-//        @Override
-//        public String toString() {
-//            return "id: " + id + " - " + "name: " + name;
-//        }
-//
-//    }
 
 }

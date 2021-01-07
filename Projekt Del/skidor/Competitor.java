@@ -8,10 +8,6 @@ public class Competitor {
 	private String time;
 	private ChronoMeter cM;
 	
-	public Competitor (int nr, String name) {
-		this.nr = nr;
-		this.name = name;
-	}
 	
 	public int getNr() {
 		return nr;
