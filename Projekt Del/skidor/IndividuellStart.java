@@ -88,11 +88,10 @@ public class IndividuellStart {
 		XMLhandler.decode();
 		for (Competitor competitor : XMLhandler.list) {
 			tvObservableList.addAll(competitor);
+			competitor.setLapTime("00:00.000");
+			competitor.setTime("00:00.000");
 		}
-		for (Competitor competitor : tvObservableList) {
-			competitor.setLapTime("0");
-			competitor.setTime("0");
-		}
+
 	}
 		
 

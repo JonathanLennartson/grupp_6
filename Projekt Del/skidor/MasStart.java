@@ -32,10 +32,12 @@ public class MasStart {
 		stage.setWidth(600);
 		stage.setHeight(600);
 
+		
 		Button startBtn = new Button("Starta t�vlingen");
 		startBtn.setOnAction(e -> cM.start());
 
 		Button stopBtn = new Button("Stoppa t�vlingen");
+		
 		stopBtn.setOnAction(e -> {
 			cM.stopp();
 			cM.reset();
@@ -44,6 +46,8 @@ public class MasStart {
 			}
 			XMLhandler.encode(aL);
 		});
+		
+		
 
 		setTableappearance();
 
@@ -86,14 +90,11 @@ public class MasStart {
 	}
 
 	private void fillTableObservableListWithSampleData() {
-
 		XMLhandler.decode();
 		for (Competitor competitor : XMLhandler.list) {
 			tvObservableList.addAll(competitor);
-		}
-		for (Competitor competitor : tvObservableList) {
-			competitor.setLapTime("0");
-			competitor.setTime("0");
+			competitor.setLapTime("00:00.000");
+			competitor.setTime("00:00.000");
 		}
 		
 	}
