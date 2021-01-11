@@ -23,7 +23,6 @@ public class IndividuellStart {
 
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
-	private ArrayList<Competitor> competitors = XMLhandler.list;
 	private Thread startTimers;
 	
 	private ChronoMeter cM;
@@ -50,7 +49,6 @@ public class IndividuellStart {
 						comp.startTimer();
 						Thread.sleep(1000);
 					}
-					task.cancel();
 					return null;
 				}
 			};
@@ -58,9 +56,7 @@ public class IndividuellStart {
 			startTimers = new Thread(task);			
 			startTimers.start();
 			
-		});
-		
-		
+		});		
 
 		Button stopBtn = new Button("Stoppa tävlingen");
 		stopBtn.setOnAction(e -> {
@@ -76,19 +72,20 @@ public class IndividuellStart {
 		fillTableObservableListWithSampleData();
 		table.setItems(tvObservableList);
 
+		
 		addLapButtonToTable();
 		addButtonToTable();
 
-		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
+		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNumber");
 		colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
 
-		TableColumn<Competitor, String> colName = new TableColumn<>("Namn");
+		TableColumn<Competitor, String> colName = new TableColumn<>("Name");
 		colName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
+		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Laptime");
 		colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
 
-		TableColumn<Competitor, String> colTime = new TableColumn<>("Tid");
+		TableColumn<Competitor, String> colTime = new TableColumn<>("Time");
 		colTime.setCellValueFactory(cellData -> cellData.getValue().getTimerProperty());
 
 		table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
@@ -122,7 +119,7 @@ public class IndividuellStart {
 	}
 
 	private void addButtonToTable() {
-		TableColumn<Competitor, Void> colBtn = new TableColumn("Stopp");
+		TableColumn<Competitor, Void> colBtn = new TableColumn("Stop");
 
 		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
 			@Override
@@ -137,7 +134,7 @@ public class IndividuellStart {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
 							competitor.stopTimer();
-							
+							task.cancel();
 						});
 					}
 
@@ -162,7 +159,7 @@ public class IndividuellStart {
 	}
 
 	private void addLapButtonToTable() {
-		TableColumn<Competitor, Void> colLap = new TableColumn("Mellantid");
+		TableColumn<Competitor, Void> colLap = new TableColumn("Laptime");
 
 		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
 			@Override
@@ -175,6 +172,10 @@ public class IndividuellStart {
 						btnLap.setOnAction((ActionEvent event) -> {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor);
+							
+							competitor.setTime(competitor.getTimer());
+							table.getItems().add(competitor);
+							
 						});
 					}
 
