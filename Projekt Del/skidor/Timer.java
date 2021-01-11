@@ -2,88 +2,76 @@ package skidor;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.util.Duration;
 
-public class Timer extends Application {
+public class Timer {
+
+	private Double startTime;
+	private Double stopTime;
 	
-	private Timeline timeline;
-	private Label timerLabel = new Label(), splitTimerLabel = new Label();
-	private DoubleProperty timeSeconds = new SimpleDoubleProperty(),
-			splitTimeSeconds = new SimpleDoubleProperty();
-	private Duration time = Duration.ZERO, splitTime = Duration.ZERO;
+	private int milliSec = 0;
+	private int sec = 0;
+	private int min = 0;
+	private SimpleStringProperty timer = new SimpleStringProperty("00:00.000");
+
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public void start(Stage primaryStage) {
-		
-		timerLabel.textProperty().bind(timeSeconds.asString());
-		timerLabel.setTextFill(Color.RED);
-		timerLabel.setStyle("-fx-font-size: 4em;");
-		splitTimerLabel.textProperty().bind(splitTimeSeconds.asString());
-		splitTimerLabel.setTextFill(Color.BLUE);
-		splitTimerLabel.setStyle("-fx-font-size: 4em;");
-		
-		
-		Button button = new Button();
-		button.setText("Start/Split");
-		button.setOnAction(new EventHandler() {
-			@Override
-			public void handle(Event event) {
-			if (timeline != null) {
-				splitTime = Duration.ZERO;
-				splitTimeSeconds.set(splitTime.toSeconds());
-			} else {
-				timeline = new Timeline(
-						new KeyFrame(Duration.millis(100),
-						new EventHandler<ActionEvent>() {
-							@Override
-							public void handle(ActionEvent t) {
-								Duration duration = ((KeyFrame)t.getSource()).getTime();
-								time = time.add(duration);
-								timeSeconds.set(time.toSeconds());
-								splitTimeSeconds.set(splitTime.toSeconds());
-							}
-						})
-			);
-			timeline.setCycleCount(Timeline.INDEFINITE);
-			timeline.play();
-			
-		}
-		}
-});
-				StackPane root = new StackPane();
-				Scene scene = new Scene(root, 300, 250);
-				
-				VBox vb = new VBox(20);
-				vb.setAlignment(Pos.CENTER);
-				vb.setPrefWidth(scene.getWidth());
-				vb.setLayoutY(30);
-				vb.getChildren().addAll(button, timerLabel, splitTimerLabel);
-				root.getChildren().add(vb);
-				
-				primaryStage.setTitle("Timer");
-				primaryStage.setScene(scene);
-				primaryStage.show();
+	
+	Timeline timeline;
+
+	public SimpleStringProperty startTimer() {
+	
+		timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+
+			milliSec++;
+
+			if (milliSec == 1000) {
+				milliSec = 0;
+				sec++;
 			}
-			
-			public static void main(String[] args) {
-				launch(args);
-				
+
+			if (sec == 60) {
+				sec = 0;
+				min++;
+
+			}
+			timer.set(String.format("%02d:%02d.%03d", min, sec, milliSec));
+
+		}));
+		
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
+		
+		return timer;
 		
 	}
+
+	public void stopTimer() {
+		if (timeline != null) {
+			timeline.stop();
+		}
+	}
+
+	public Double getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Double startTime) {
+		this.startTime = startTime;
+	}
+
+	public Double getStopTime() {
+		return stopTime;
+	}
+
+	public void setStopTime(Double stopTime) {
+		this.stopTime = stopTime;
+	}
+	
+	public SimpleStringProperty getTimer() {
+		return timer;		
+	}
+	
+	
 
 }

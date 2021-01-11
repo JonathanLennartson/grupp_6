@@ -17,33 +17,32 @@ import javafx.util.Duration;
 public class ChronoMeter extends Pane {
 
 	// TODO
-	static private int milliSekunder = 0;
-	static private int sekunder = 0;
-	static private int minuter = 0;
+	private int milliSekunder = 0;
+	private int sekunder = 0;
+	private int minuter = 0;
 	private Timeline timeline;
 	private static String tidString = "";
 	private boolean aktiv = false;
 
-	static String tidFormat = String.format("%02d:%02d:%03d", minuter, sekunder, milliSekunder);
-
-	static Label label = new Label(tidFormat); // ???
+	private String tidFormat = String.format("%02d:%02d:%03d", minuter, sekunder, milliSekunder);
+	private Label label = new Label(tidFormat); // ???
 
 	public ChronoMeter() {
 
-		// TODO
+			// TODO
 
-		label.setFont(new Font("Comic Sans MS", 40));
+			label.setFont(new Font("Comic Sans MS", 40));
 
-		getChildren().add(label);
+			getChildren().add(label);
 
-		timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> timelabel()));
-		timeline.setCycleCount(Timeline.INDEFINITE);
+			timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> timelabel()));
+			timeline.setCycleCount(Timeline.INDEFINITE);
 
 	}
 
 	private void timelabel() {
 
-		if (aktiv == true) {
+		
 
 			milliSekunder++;
 
@@ -59,7 +58,7 @@ public class ChronoMeter extends Pane {
 
 			}
 
-		}
+		
 
 		tidString = String.format("%02d:%02d:%03d", minuter, sekunder, milliSekunder);
 		label.setText(tidString);

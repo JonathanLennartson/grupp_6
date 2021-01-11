@@ -1,13 +1,15 @@
 package skidor;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Competitor {
 	
 	private int nr;
 	private String name;
 	private String lapTime;
 	private String time;
-	private ChronoMeter cM;
-	
+	private Timer theTimer = new Timer();
+	private SimpleStringProperty timer = theTimer.getTimer();
 	
 	public int getNr() {
 		return nr;
@@ -41,9 +43,21 @@ public class Competitor {
 		this.time = time;
 	}
 
-	public ChronoMeter getcM() {
-		cM = new ChronoMeter();
-		return cM;
-	}	
+	public String getTimer() {
+		return timer.get();
+	}
+	
+	public SimpleStringProperty getTimerProperty() {
+		return timer;
+		
+	}
+	
+	public void startTimer() {
+		theTimer.startTimer();
+	}
+	
+	public void stopTimer() {
+		theTimer.stopTimer();
+	}
 
 }

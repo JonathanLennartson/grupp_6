@@ -19,6 +19,7 @@ public class IndividuellStart {
 
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
+	
 	ChronoMeter cM;
 	
 	public void show() {
@@ -29,10 +30,15 @@ public class IndividuellStart {
 		stage.setTitle("Skidtï¿½vling!!");
 		stage.setWidth(600);
 		stage.setHeight(600);
-
+		
 		Button startBtn = new Button("Starta tÃ¤vlingen");
-		startBtn.setOnAction(e -> cM.start());
-
+		startBtn.setOnAction(e -> {			
+			cM.start();
+			for (Competitor competitor: XMLhandler.list) {
+				competitor.startTimer();
+				
+			}
+		});
 
 		
 		Button stopBtn = new Button("Stoppa tävlingen");
@@ -61,8 +67,8 @@ public class IndividuellStart {
 		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
 		colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
 
-		TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
-		colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+		TableColumn<Competitor, String> colTime = new TableColumn<>("Tid");
+		colTime.setCellValueFactory(cellData -> cellData.getValue().getTimerProperty());
 
 		table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
 
@@ -110,6 +116,8 @@ public class IndividuellStart {
 							
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
+							
+							competitor.stopTimer();
 						});
 					}
 
