@@ -1,7 +1,11 @@
 package skidor;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -19,35 +23,53 @@ public class IndividuellStart {
 
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
+	private ArrayList<Competitor> competitors = XMLhandler.list;
+	private Thread startTimers;
 	
-	ChronoMeter cM;
-	
+	private ChronoMeter cM;
+	private Task<Void> task;
+
 	public void show() {
 
 		Stage stage = new Stage();
 		cM = new ChronoMeter();
-		
-		stage.setTitle("Skidtï¿½vling!!");
+
+		stage.setTitle("Xcountry skii race!!");
 		stage.setWidth(600);
 		stage.setHeight(600);
-		
-		Button startBtn = new Button("Starta tÃ¤vlingen");
-		startBtn.setOnAction(e -> {			
-			cM.start();
-			for (Competitor competitor: XMLhandler.list) {
-				competitor.startTimer();
-				
-			}
-		});
 
+		Button startBtn = new Button("Start race");
+		startBtn.setOnAction(e -> {
+			cM.start();
+
+			task = new Task<Void>() {
+				
+				public Void call() throws InterruptedException {					
+					
+					for (Competitor comp : XMLhandler.list) {						
+						comp.startTimer();
+						Thread.sleep(1000);
+					}
+					task.cancel();
+					return null;
+				}
+			};
+			
+			startTimers = new Thread(task);			
+			startTimers.start();
+			
+		});
 		
+		
+
 		Button stopBtn = new Button("Stoppa tävlingen");
 		stopBtn.setOnAction(e -> {
-        	cM.stopp();
-        	cM.reset();
-        });
-		
-
+			cM.stopp();
+			cM.reset();			
+			task.cancel();
+			
+			
+		});
 
 		setTableappearance();
 
@@ -56,7 +78,6 @@ public class IndividuellStart {
 
 		addLapButtonToTable();
 		addButtonToTable();
-		
 
 		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
 		colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
@@ -73,10 +94,10 @@ public class IndividuellStart {
 		table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
 
 		HBox hBox = new HBox(20);
-        hBox.getChildren().addAll(startBtn, stopBtn, cM);
-        
-        VBox vBox = new VBox(20);
-        vBox.getChildren().addAll(hBox, table);
+		hBox.getChildren().addAll(startBtn, stopBtn, cM);
+
+		VBox vBox = new VBox(20);
+		vBox.getChildren().addAll(hBox, table);
 
 		Scene scene = new Scene(new Group(vBox));
 		scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
@@ -99,7 +120,6 @@ public class IndividuellStart {
 		}
 
 	}
-		
 
 	private void addButtonToTable() {
 		TableColumn<Competitor, Void> colBtn = new TableColumn("Stopp");
@@ -113,11 +133,11 @@ public class IndividuellStart {
 
 					{
 						btn.setOnAction((ActionEvent event) -> {
-							
+
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
-							
 							competitor.stopTimer();
+							
 						});
 					}
 
