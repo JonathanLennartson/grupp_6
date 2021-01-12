@@ -47,8 +47,9 @@ public class IndividuellStart {
 					
 					for (Competitor comp : XMLhandler.list) {						
 						comp.startTimer();
-						Thread.sleep(1000);
+						Thread.sleep(5000);
 					}
+					task.cancel();
 					return null;
 				}
 			};
@@ -134,7 +135,7 @@ public class IndividuellStart {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
 							competitor.stopTimer();
-							task.cancel();
+
 						});
 					}
 
@@ -171,9 +172,7 @@ public class IndividuellStart {
 					{
 						btnLap.setOnAction((ActionEvent event) -> {
 							Competitor competitor = getTableView().getItems().get(getIndex());
-							System.out.println("selectedData: " + competitor);
-							
-							competitor.setTime(competitor.getTimer());
+							System.out.println("selectedData: " + competitor);									
 							table.getItems().add(competitor);
 							
 						});
