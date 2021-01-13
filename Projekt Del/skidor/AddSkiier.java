@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -34,6 +35,7 @@ public class AddSkiier {
 		addUIControls(gridPane);
 		
 		scene = new Scene(gridPane, 800, 500);
+		scene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 		
 		window.setScene(scene);
 		window.show();
@@ -66,11 +68,13 @@ public class AddSkiier {
 		
 		Label headerLabel = new Label("New skiier");
 		headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+		headerLabel.setTextFill(Paint.valueOf("white"));
 		gridPane.add(headerLabel, 0, 0, 2, 1);
 		GridPane.setHalignment(headerLabel, HPos.CENTER);
 		GridPane.setMargin(headerLabel, new Insets(20, 0, 20, 0));
 		
 		Label nameLabel = new Label("Full Name");
+		nameLabel.setTextFill(Paint.valueOf("white"));
 		gridPane.add(nameLabel, 0, 1);
 		
 		TextField nameField = new TextField();
@@ -78,6 +82,7 @@ public class AddSkiier {
 		gridPane.add(nameField, 1, 1);
 		
 		Label startNummer = new Label("StartNummer");
+		startNummer.setTextFill(Paint.valueOf("white"));
 		gridPane.add(startNummer, 0, 2);
 		
 		TextField startField = new TextField();
