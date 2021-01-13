@@ -58,7 +58,7 @@ public class IndividuellStart {
 			
 		});		
 
-		Button stopBtn = new Button("Stoppa tävlingen");
+		Button stopBtn = new Button("Stoppa tÃ¤vlingen");
 		stopBtn.setOnAction(e -> {
 			cM.stopp();
 			cM.reset();			

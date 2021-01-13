@@ -17,6 +17,7 @@ public class MenyFlikar  {
 	static Scene mainScene, individScene, masScene, jaktScene;
 	static ComboBox<String> menu;
 	static Button selectMenuButton;
+	static Button addSkiier;
 	static Stage window = new Stage();
 	
 	
@@ -31,11 +32,13 @@ public class MenyFlikar  {
 
 			selectMenuButton = new Button("Välj");
 			selectMenuButton.setOnAction(e -> menuButtonClicked());
+			addSkiier = new Button("Add Skiier");
+			addSkiier.setOnAction(e -> addSkiierClicked());
 
 			BorderPane layout = new BorderPane();
 			HBox menuLayout = new HBox(40);
 
-			menuLayout.getChildren().addAll(menu, selectMenuButton);
+			menuLayout.getChildren().addAll(menu, selectMenuButton, addSkiier);
 
 			menuLayout.setPadding(new Insets(20, 20, 20, 20));
 			layout.setTop(menuLayout);
@@ -58,6 +61,11 @@ public class MenyFlikar  {
 		if (answer) {
 			window.close();
 		}
+	}
+	
+	private static void addSkiierClicked() {
+		AddSkiier skiier = new AddSkiier();
+		skiier.show();
 	}
 
 	private static void menuButtonClicked() {

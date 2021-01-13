@@ -33,10 +33,10 @@ public class MasStart {
 		stage.setHeight(600);
 
 		
-		Button startBtn = new Button("Starta t�vlingen");
+		Button startBtn = new Button("Starta tävlingen");
 		startBtn.setOnAction(e -> cM.start());
 
-		Button stopBtn = new Button("Stoppa t�vlingen");
+		Button stopBtn = new Button("Stoppa tävlingen");
 		
 		stopBtn.setOnAction(e -> {
 			cM.stopp();
