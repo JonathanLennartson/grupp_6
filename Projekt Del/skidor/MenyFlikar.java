@@ -23,13 +23,13 @@ public class MenyFlikar  {
 	public void show() {
 	
 		
-			window.setTitle("Skidåkartävling");
+			window.setTitle("X skiing contest");
 
 			menu = new ComboBox<>();
-			menu.getItems().addAll("Individuell Start", "Masstart", "Jaktstart");
-			menu.setPromptText("Välj Din Start-Typ");
+			menu.getItems().addAll("Individuell Start", "Mass Start", "Hunt start");
+			menu.setPromptText("Choose Race Type");
 
-			selectMenuButton = new Button("Välj");
+			selectMenuButton = new Button("Choose");
 			selectMenuButton.setOnAction(e -> menuButtonClicked());
 
 			BorderPane layout = new BorderPane();
@@ -64,9 +64,9 @@ public class MenyFlikar  {
 		menu.getValue();
 		if (menu.getValue() == "Individuell Start") {
 			individuellStart();
-		} else if (menu.getValue() == "Jaktstart") {
+		} else if (menu.getValue() == "Hunt Start") {
 			jaktStart();
-		} else if (menu.getValue() == "Masstart") {
+		} else if (menu.getValue() == "Mass Start") {
 			masStart();
 		}
 	}

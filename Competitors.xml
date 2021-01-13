@@ -2,9 +2,9 @@
 <java version="14.0.2" class="java.beans.XMLDecoder">
  <object class="java.util.ArrayList">
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor0">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:02:645</string>
+     <string>00:03:145</string>
     </void>
     <void property="name">
      <string>Rosie Brennan</string>
@@ -13,14 +13,14 @@
      <int>1</int>
     </void>
     <void property="time">
-     <string>00:06:181</string>
+     <string>00:13:593</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor1">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:02:853</string>
+     <string>00:04:633</string>
     </void>
     <void property="name">
      <string>Tatiana Sorina</string>
@@ -29,14 +29,14 @@
      <int>2</int>
     </void>
     <void property="time">
-     <string>00:06:357</string>
+     <string>00:13:993</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor2">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:03:045</string>
+     <string>00:05:433</string>
     </void>
     <void property="name">
      <string>Therese Johaug</string>
@@ -45,14 +45,14 @@
      <int>3</int>
     </void>
     <void property="time">
-     <string>00:06:533</string>
+     <string>00:14:441</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor3">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:03:365</string>
+     <string>00:06:185</string>
     </void>
     <void property="name">
      <string>Natalia Nepryaeva</string>
@@ -61,14 +61,14 @@
      <int>4</int>
     </void>
     <void property="time">
-     <string>00:06:725</string>
+     <string>00:14:882</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor4">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:03:541</string>
+     <string>00:07:209</string>
     </void>
     <void property="name">
      <string>Nadine Fähndrich</string>
@@ -77,14 +77,14 @@
      <int>5</int>
     </void>
     <void property="time">
-     <string>00:06:869</string>
+     <string>00:15:529</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor5">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:03:733</string>
+     <string>00:07:732</string>
     </void>
     <void property="name">
      <string>Anamarija Lampic</string>
@@ -93,14 +93,14 @@
      <int>6</int>
     </void>
     <void property="time">
-     <string>00:07:061</string>
+     <string>00:15:929</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor6">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:03:957</string>
+     <string>00:08:218</string>
     </void>
     <void property="name">
      <string>Ebba Andersson</string>
@@ -109,14 +109,14 @@
      <int>7</int>
     </void>
     <void property="time">
-     <string>00:07:221</string>
+     <string>00:16:409</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor7">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:04:389</string>
+     <string>00:10:185</string>
     </void>
     <void property="name">
      <string>Jessica Diggins</string>
@@ -125,14 +125,14 @@
      <int>8</int>
     </void>
     <void property="time">
-     <string>00:07:397</string>
+     <string>00:16:857</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor8">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:04:693</string>
+     <string>00:11:417</string>
     </void>
     <void property="name">
      <string>Yulia Stupak</string>
@@ -141,14 +141,14 @@
      <int>9</int>
     </void>
     <void property="time">
-     <string>00:07:605</string>
+     <string>00:17:273</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="skidor.Competitor" id="Competitor9">
+   <object class="skidor.Competitor">
     <void property="lapTime">
-     <string>00:04:933</string>
+     <string>00:11:753</string>
     </void>
     <void property="name">
      <string>Frida Karlsson</string>
@@ -157,7 +157,7 @@
      <int>10</int>
     </void>
     <void property="time">
-     <string>00:07:861</string>
+     <string>00:17:721</string>
     </void>
    </object>
   </void>

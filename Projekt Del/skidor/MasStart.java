@@ -28,15 +28,15 @@ public class MasStart {
 		Stage stage = new Stage();
 		cM = new ChronoMeter();
 
-		stage.setTitle("Skidtävling!!");
+		stage.setTitle("Mass Start");
 		stage.setWidth(600);
 		stage.setHeight(600);
 
 		
-		Button startBtn = new Button("Starta t�vlingen");
+		Button startBtn = new Button("Start competition");
 		startBtn.setOnAction(e -> cM.start());
 
-		Button stopBtn = new Button("Stoppa t�vlingen");
+		Button stopBtn = new Button("Stop competition");
 		
 		stopBtn.setOnAction(e -> {
 			cM.stopp();
@@ -57,16 +57,16 @@ public class MasStart {
 		addLapButtonToTable();
 		addButtonToTable();
 
-		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
+		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNumber");
 		colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
 
-		TableColumn<Competitor, String> colName = new TableColumn<>("Namn");
+		TableColumn<Competitor, String> colName = new TableColumn<>("Name");
 		colName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
+		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Laptime");
 		colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
 
-		TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
+		TableColumn<Competitor, Integer> colTime = new TableColumn<>("Time");
 		colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
 
 		table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
@@ -117,8 +117,8 @@ public class MasStart {
 							cM.setTimerTid();
 							competitor.setTime(cM.getTimerTid());
 							System.out.println(competitor.getTime());
-							table.getItems().remove(competitor);
-							table.getItems().add(competitor);
+							table.refresh();
+
 
 						});
 					}
@@ -161,8 +161,7 @@ public class MasStart {
 							cM.setTimerTid();
 							competitor.setLapTime(cM.getTimerTid());
 							System.out.println(competitor.getTime());
-							table.getItems().remove(competitor);
-							table.getItems().add(competitor);
+							table.refresh();
 
 						});
 					}
