@@ -37,7 +37,6 @@ public class Timer {
 
 			}
 			timer.set(String.format("%02d:%02d.%03d", min, sec, milliSec));
-//			setLapTime(timer.set(String.format("%02d:%02d.%03d", min, sec, milliSec)));
 			
 		})); 
 		

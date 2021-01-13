@@ -173,7 +173,8 @@ public class IndividuellStart {
 						btnLap.setOnAction((ActionEvent event) -> {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor);									
-							table.getItems().add(competitor);
+							competitor.setLapTime(competitor.getTimer());
+							table.refresh();
 							
 						});
 					}
