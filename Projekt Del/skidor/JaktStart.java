@@ -2,6 +2,7 @@ package skidor;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -19,24 +20,54 @@ public class JaktStart {
 	
 	private final TableView<Competitor> table = new TableView<>();
     private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
-    ChronoMeter cM;   
- 
+    private Thread startTimers;
+    
+    private Boolean buttonStartBoolean = true;
+    
+    ChronoMeter cM;  
+    Task<Void> task;
+    
     public void show() {
+    	
     	
     	Stage stage = new Stage();
     	cM = new ChronoMeter();
     	
-        stage.setTitle("SkidtÃ¤vling!!");
+        stage.setTitle("Pursuit");
         stage.setWidth(600);
         stage.setHeight(600);
         
-        Button startBtn = new Button("Starta tÃ¤vlingen");
-		startBtn.setOnAction(e -> cM.start());
+//        Fixa boolean för startknapp för att förhindra att timern startar ny tråd som gör att den inte går att stoppa.
+//        Boolean gör så att knappen förlorar sin funktionalitet efter ett tryck. Detta gäller för klockan ChronoMeter.
+        
+        Button startBtn = new Button("Start Race");
+        startBtn.setOnAction(e -> { 	 	
+    
+        	cM.start();       	
+			
+			task = new Task<Void>() {
+				
+				public Void call() throws InterruptedException {					
+					
+					for (Competitor comp : XMLhandler.list) {						
+						comp.startTimer();
+						Thread.sleep(5000);
+					}
+					task.cancel();
+					return null;
+				}
+			};
+			
+			startTimers = new Thread(task);			
+			startTimers.start();
+			
+		});		
 
-		Button stopBtn = new Button("Stoppa tÃ¤vlingen");
+		Button stopBtn = new Button("Stop Competition");
 		stopBtn.setOnAction(e -> {
         	cM.stopp();
         	cM.reset();
+        	task.cancel();
         });
 		
         
@@ -49,17 +80,17 @@ public class JaktStart {
         addButtonToTable();        
         
 
-        TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
+        TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNumber");
         colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
 
-        TableColumn<Competitor, String> colName = new TableColumn<>("Namn");
+        TableColumn<Competitor, String> colName = new TableColumn<>("Name");
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         
-        TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
+        TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Laptime");
         colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
         
-        TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
-        colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        TableColumn<Competitor, String> colTime = new TableColumn<>("Time");
+        colTime.setCellValueFactory(cellData -> cellData.getValue().getTimerProperty());
         
         
         table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
@@ -95,7 +126,7 @@ public class JaktStart {
     	
 
     private void addButtonToTable() {
-        TableColumn<Competitor, Void> colBtn = new TableColumn("Start/Stopp");
+        TableColumn<Competitor, Void> colBtn = new TableColumn("Time");
 
         Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
             @Override
@@ -110,6 +141,7 @@ public class JaktStart {
                         
                         	Competitor competitor = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + competitor);
+                            competitor.stopTimer();
                         });
                     }
 
@@ -137,7 +169,7 @@ public class JaktStart {
     }
     
     private void addLapButtonToTable() {
-        TableColumn<Competitor, Void> colLap = new TableColumn("Mellantid");
+        TableColumn<Competitor, Void> colLap = new TableColumn("Laptime");
 
         Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
             @Override
@@ -150,6 +182,8 @@ public class JaktStart {
                         btnLap.setOnAction((ActionEvent event) -> {
                         	Competitor competitor = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + competitor);
+                            competitor.setLapTime(competitor.getTimer());
+                            table.refresh();
                         });
                     }
 

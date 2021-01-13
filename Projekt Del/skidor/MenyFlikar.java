@@ -27,7 +27,7 @@ public class MenyFlikar  {
 			window.setTitle("X skiing contest");
 
 			menu = new ComboBox<>();
-			menu.getItems().addAll("Individuell Start", "Mass Start", "Hunt start");
+			menu.getItems().addAll("Individual Start", "Mass Start", "Pursuit");
 			menu.setPromptText("Choose Race Type");
 
 			selectMenuButton = new Button("Choose");
@@ -70,9 +70,9 @@ public class MenyFlikar  {
 
 	private static void menuButtonClicked() {
 		menu.getValue();
-		if (menu.getValue() == "Individuell Start") {
+		if (menu.getValue() == "Individual Start") {
 			individuellStart();
-		} else if (menu.getValue() == "Hunt Start") {
+		} else if (menu.getValue() == "Pursuit") {
 			jaktStart();
 		} else if (menu.getValue() == "Mass Start") {
 			masStart();
