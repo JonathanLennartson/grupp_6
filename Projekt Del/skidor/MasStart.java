@@ -117,8 +117,7 @@ public class MasStart {
 							cM.setTimerTid();
 							competitor.setTime(cM.getTimerTid());
 							System.out.println(competitor.getTime());
-							table.getItems().remove(competitor);
-							table.getItems().add(competitor);
+							table.refresh();
 
 						});
 					}
@@ -161,8 +160,7 @@ public class MasStart {
 							cM.setTimerTid();
 							competitor.setLapTime(cM.getTimerTid());
 							System.out.println(competitor.getTime());
-							table.getItems().remove(competitor);
-							table.getItems().add(competitor);
+							table.refresh();
 
 						});
 					}
