@@ -14,5 +14,17 @@ Tryck på välj.
 Ett nytt fönster öppnas med en tableview som innehåller starten.
 Starten kommer se olika ut beroende på vilken som du har valt. 
 
+Den individuella starten så finns det en knapp i toppen som startar tävlingen. 
+De tävlande startar då med ett intervall på 5 sekunder (går att ställa om till till vilken tid man föredrar).
+
+Masstarten går till så att användaren startar loppet med knappen högst upp. Sedan kan användaren ta ut 
+mellantid och stopptid med knapparna i kolumnerna för respektive åkare. När alla åkare gått i mål stoppar användaren 
+tvälingen med knappen i toppen av programmet. Då serialiseras resultaten som därefter ligger till grund för 
+jaktstarten.
+
+Det som vi tyvärr inte hunnit med ännu inför opponeringen är tidtagning för mellantid i den individuella starten, 
+samt funktionen för jaktstarten där starttiden baseras på tidigare resultat. Vi siktar att få klart det inom 
+kompletteringstiden!
+
 
 
