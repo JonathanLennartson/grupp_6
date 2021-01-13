@@ -14,6 +14,7 @@ public class Timer {
 	private int sec = 0;
 	private int min = 0;
 	private SimpleStringProperty timer = new SimpleStringProperty("00:00.000");
+	private String lapTime; 
 
 	
 	
@@ -36,8 +37,9 @@ public class Timer {
 
 			}
 			timer.set(String.format("%02d:%02d.%03d", min, sec, milliSec));
-
-		}));
+//			setLapTime(timer.set(String.format("%02d:%02d.%03d", min, sec, milliSec)));
+			
+		})); 
 		
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
@@ -70,6 +72,14 @@ public class Timer {
 	
 	public SimpleStringProperty getTimer() {
 		return timer;		
+	}
+
+	public String getLapTime() {
+		return lapTime;
+	}
+
+	public void setLapTime(String lapTime) {
+		this.lapTime = lapTime;
 	}
 	
 	
