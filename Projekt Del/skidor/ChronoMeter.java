@@ -21,7 +21,7 @@ public class ChronoMeter extends Pane {
 	private int sekunder = 0;
 	private int minuter = 0;
 	private Timeline timeline;
-	private static String tidString = "";
+	private String tidString = "";
 	private boolean aktiv = false;
 
 	private String tidFormat = String.format("%02d:%02d:%03d", minuter, sekunder, milliSekunder);
@@ -60,7 +60,7 @@ public class ChronoMeter extends Pane {
 
 		
 
-		tidString = String.format("%02d:%02d:%03d", minuter, sekunder, milliSekunder);
+		tidString = String.format("%02d:%02d.%03d", minuter, sekunder, milliSekunder);
 		label.setText(tidString);
 
 	}

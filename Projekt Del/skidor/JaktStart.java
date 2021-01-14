@@ -42,16 +42,18 @@ public class JaktStart {
         
         Button startBtn = new Button("Start Race");
         startBtn.setOnAction(e -> { 	 	
-    
+
         	cM.start();       	
 			
 			task = new Task<Void>() {
 				
 				public Void call() throws InterruptedException {					
 					
-					for (Competitor comp : XMLhandler.list) {						
-						comp.startTimer();
-						Thread.sleep(5000);
+					for (Competitor competitor : XMLhandler.list) {						
+						Thread.sleep(competitor.getHeadStart());
+						competitor.startTimer();
+						
+						
 					}
 					task.cancel();
 					return null;

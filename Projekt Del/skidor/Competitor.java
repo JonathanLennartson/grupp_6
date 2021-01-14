@@ -7,7 +7,9 @@ public class Competitor {
 	private int nr;
 	private String name;
 	private String lapTime;
-	private String time;
+	private String stopTime;
+	private Double totalTimeSec;
+	private Long headStart;
 	private Timer theTimer = new Timer();
 	private SimpleStringProperty timer = theTimer.getTimer();
 	
@@ -35,12 +37,12 @@ public class Competitor {
 		this.lapTime = lapTime;
 	}
 
-	public String getTime() {
-		return time;
+	public String getStopTime() {
+		return stopTime;
 	}	
 
-	public void setTime(String time) {
-		this.time = time;
+	public void setStopTime(String time) {
+		this.stopTime = time;
 	}
 
 	public String getTimer() {
@@ -48,8 +50,7 @@ public class Competitor {
 	}
 	
 	public SimpleStringProperty getTimerProperty() {
-		return timer;
-		
+		return timer;		
 	}
 	
 	public void startTimer() {
@@ -58,6 +59,22 @@ public class Competitor {
 	
 	public void stopTimer() {
 		theTimer.stopTimer();
+	}
+
+	public Double getTotalTimeSec() {
+		return totalTimeSec;
+	}
+
+	public void setTotalTimeSec(Double totalTimeSec) {
+		this.totalTimeSec = totalTimeSec;
+	}
+
+	public Long getHeadStart() {
+		return headStart;
+	}
+
+	public void setHeadStart(Long headStart) {
+		this.headStart = headStart;
 	}
 
 }

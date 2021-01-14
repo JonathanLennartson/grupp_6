@@ -47,7 +47,7 @@ public class IndividuellStart {
 					
 					for (Competitor comp : XMLhandler.list) {						
 						comp.startTimer();
-						Thread.sleep(5000);
+						Thread.sleep(5000);;
 					}
 					task.cancel();
 					return null;

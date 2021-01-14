@@ -22,7 +22,7 @@ public class MasStart {
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
 	ChronoMeter cM;
-	ArrayList<Competitor> aL = new ArrayList();
+	ArrayList<Competitor> competitorList = new ArrayList();
 	public void show() {
 
 		Stage stage = new Stage();
@@ -42,11 +42,16 @@ public class MasStart {
 			cM.stopp();
 			cM.reset();
 			for (Competitor competitor : tvObservableList) {
-				aL.add(competitor);
-			}
-			XMLhandler.encode(aL);
-		});
-		
+				competitorList.add(competitor);
+			}			
+			
+			PursuitStartTime pST = new PursuitStartTime();							
+			pST.setTotalTimeSec();
+			pST.setPursuitStartTime();
+			
+			XMLhandler.encode(competitorList);			
+			
+		});		
 		
 
 		setTableappearance();
@@ -67,7 +72,7 @@ public class MasStart {
 		colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
 
 		TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
-		colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+		colTime.setCellValueFactory(new PropertyValueFactory<>("stopTime"));
 
 		table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
 
@@ -94,7 +99,7 @@ public class MasStart {
 		for (Competitor competitor : XMLhandler.list) {
 			tvObservableList.addAll(competitor);
 			competitor.setLapTime("00:00.000");
-			competitor.setTime("00:00.000");
+			competitor.setStopTime("00:00.000");
 		}
 		
 	}
@@ -115,9 +120,10 @@ public class MasStart {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
 							cM.setTimerTid();
-							competitor.setTime(cM.getTimerTid());
-							System.out.println(competitor.getTime());
-							table.refresh();
+							competitor.setStopTime(cM.getTimerTid());
+							System.out.println(competitor.getStopTime());
+							table.refresh();		
+					
 
 						});
 					}
@@ -159,7 +165,7 @@ public class MasStart {
 							System.out.println("selectedData: " + competitor.getName());
 							cM.setTimerTid();
 							competitor.setLapTime(cM.getTimerTid());
-							System.out.println(competitor.getTime());
+							System.out.println(competitor.getStopTime());
 							table.refresh();
 
 						});
