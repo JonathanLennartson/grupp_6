@@ -13,20 +13,20 @@
      <string>Tatiana Sorina</string>
     </void>
     <void property="nr">
-     <int>2</int>
+     <int>1</int>
     </void>
     <void property="stopTime">
-     <string>00:02.705</string>
+     <string>00:01.437</string>
     </void>
     <void property="totalTimeSec">
-     <double>2.705</double>
+     <double>1.437</double>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="skidor.Competitor">
     <void property="headStart">
-     <long>793</long>
+     <long>1457</long>
     </void>
     <void property="lapTime">
      <string>00:00.000</string>
@@ -35,20 +35,20 @@
      <string>Yulia Stupak</string>
     </void>
     <void property="nr">
-     <int>9</int>
+     <int>2</int>
     </void>
     <void property="stopTime">
-     <string>00:03.498</string>
+     <string>00:02.894</string>
     </void>
     <void property="totalTimeSec">
-     <double>3.498</double>
+     <double>2.894</double>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="skidor.Competitor">
     <void property="headStart">
-     <long>486</long>
+     <long>500</long>
     </void>
     <void property="lapTime">
      <string>00:00.000</string>
@@ -57,7 +57,29 @@
      <string>Ebba Andersson</string>
     </void>
     <void property="nr">
-     <int>7</int>
+     <int>3</int>
+    </void>
+    <void property="stopTime">
+     <string>00:03.394</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>3.394</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>590</long>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Therese Johaug</string>
+    </void>
+    <void property="nr">
+     <int>4</int>
     </void>
     <void property="stopTime">
      <string>00:03.985</string>
@@ -70,139 +92,7 @@
   <void method="add">
    <object class="skidor.Competitor">
     <void property="headStart">
-     <long>431</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Therese Johaug</string>
-    </void>
-    <void property="nr">
-     <int>3</int>
-    </void>
-    <void property="stopTime">
-     <string>00:04.417</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>4.417</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>347</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Jessica Diggins</string>
-    </void>
-    <void property="nr">
-     <int>8</int>
-    </void>
-    <void property="stopTime">
-     <string>00:04.765</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>4.765</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>491</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Anamarija Lampic</string>
-    </void>
-    <void property="nr">
-     <int>6</int>
-    </void>
-    <void property="stopTime">
-     <string>00:05.256</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>5.256</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>344</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Rosie Brennan</string>
-    </void>
-    <void property="nr">
-     <int>1</int>
-    </void>
-    <void property="stopTime">
-     <string>00:05.601</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>5.601</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>1615</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Nadine Fähndrich</string>
-    </void>
-    <void property="nr">
-     <int>5</int>
-    </void>
-    <void property="stopTime">
-     <string>00:07.216</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>7.216</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>544</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Natalia Nepryaeva</string>
-    </void>
-    <void property="nr">
-     <int>4</int>
-    </void>
-    <void property="stopTime">
-     <string>00:07.761</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>7.761</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>1424</long>
+     <long>1540</long>
     </void>
     <void property="lapTime">
      <string>00:00.000</string>
@@ -211,13 +101,123 @@
      <string>Frida Karlsson</string>
     </void>
     <void property="nr">
+     <int>5</int>
+    </void>
+    <void property="stopTime">
+     <string>00:05.525</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>5.525</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>602</long>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Natalia Nepryaeva</string>
+    </void>
+    <void property="nr">
+     <int>6</int>
+    </void>
+    <void property="stopTime">
+     <string>00:06.128</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>6.128</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>549</long>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Nadine Fähndrich</string>
+    </void>
+    <void property="nr">
+     <int>7</int>
+    </void>
+    <void property="stopTime">
+     <string>00:06.678</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>6.678</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>735</long>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Rosie Brennan</string>
+    </void>
+    <void property="nr">
+     <int>8</int>
+    </void>
+    <void property="stopTime">
+     <string>00:07.413</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>7.413</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>767</long>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Anamarija Lampic</string>
+    </void>
+    <void property="nr">
+     <int>9</int>
+    </void>
+    <void property="stopTime">
+     <string>00:08.181</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>8.181</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>413</long>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Jessica Diggins</string>
+    </void>
+    <void property="nr">
      <int>10</int>
     </void>
     <void property="stopTime">
-     <string>00:09.185</string>
+     <string>00:08.594</string>
     </void>
     <void property="totalTimeSec">
-     <double>9.185</double>
+     <double>8.594</double>
     </void>
    </object>
   </void>

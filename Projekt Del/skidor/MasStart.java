@@ -51,6 +51,12 @@ public class MasStart {
 			pST.setTotalTimeSec();			
 			Collections.sort(competitorList, Competitor.totalTimeSecComparator);
 			pST.setPursuitStartTime(competitorList);
+			
+			int startNumber = 1;
+			for (Competitor competitor : competitorList) {
+				competitor.setNr(startNumber);
+				startNumber++;
+			}			
 
 			XMLhandler.encode(competitorList);			
 			
