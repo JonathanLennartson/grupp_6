@@ -30,8 +30,7 @@ public class ConfirmBox {
 		noButton.setOnAction(e -> {
 			answer = false;
 			window.close();
-		});
-		
+		});		
 
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(label, yesButton, noButton);

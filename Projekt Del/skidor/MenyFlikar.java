@@ -1,30 +1,24 @@
 package skidor;
 
-import javafx.application.Application;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class MenyFlikar  {
-	
-
-	static BorderPane jaktPane, massPane, individPane;
+public class MenyFlikar  {	
 	
 	static Scene mainScene, individScene, masScene, jaktScene;
 	static ComboBox<String> menu;
 	static Button selectMenuButton;
 	static Button addSkiier;
-	static Stage window = new Stage();
+	static Stage window = new Stage();	
 	
-	
-	public void show() {
-	
+	public void show() {	
 		
-			window.setTitle("X skiing contest");
+			window.setTitle("X Skiing Contest Timer");
 
 			menu = new ComboBox<>();
 			menu.getItems().addAll("Individual Start", "Mass Start", "Pursuit");
@@ -35,21 +29,19 @@ public class MenyFlikar  {
 			addSkiier = new Button("Add Skiier");
 			addSkiier.setOnAction(e -> addSkiierClicked());
 
-			BorderPane layout = new BorderPane();
+			StackPane layout = new StackPane();
 			HBox menuLayout = new HBox(40);
 
 			menuLayout.getChildren().addAll(menu, selectMenuButton, addSkiier);
+			menuLayout.setAlignment(Pos.CENTER);
+			layout.getChildren().add(menuLayout);
 
-			menuLayout.setPadding(new Insets(20, 20, 20, 20));
-			layout.setTop(menuLayout);
-
-			mainScene = new Scene(layout, 500, 200);
+			mainScene = new Scene(layout, 500, 150);
 			mainScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 			window.setOnCloseRequest(e -> {
 				e.consume();
 				closeProgram();
-			});
-			
+			});			
 			
 			window.setScene(mainScene);
 			window.show();
@@ -95,5 +87,4 @@ public class MenyFlikar  {
 	}
 
 }
-
 

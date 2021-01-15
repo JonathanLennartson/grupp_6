@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,26 +22,26 @@ public class MasStart {
 
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
-	ChronoMeter cM;
-	ArrayList<Competitor> competitorList = new ArrayList();
+	ChronoMeter mainTime;
+	ArrayList<Competitor> competitorList = new ArrayList<Competitor>();
 	public void show() {
 
 		Stage stage = new Stage();
-		cM = new ChronoMeter();
+		mainTime = new ChronoMeter();
 
 		stage.setTitle("Skidtävling!!");
 		stage.setWidth(600);
 		stage.setHeight(600);
 
 		
-		Button startBtn = new Button("Starta tävlingen");
-		startBtn.setOnAction(e -> cM.start());
+		Button startBtn = new Button("Start Race");
+		startBtn.setOnAction(e -> mainTime.start());
 
-		Button stopBtn = new Button("Stoppa tävlingen");
+		Button stopBtn = new Button("Stop Race");
 		
 		stopBtn.setOnAction(e -> {
-			cM.stopp();
-			cM.reset();
+			mainTime.stopp();
+			mainTime.reset();
 			for (Competitor competitor : tvObservableList) {
 				competitorList.add(competitor);
 			}			
@@ -62,13 +63,13 @@ public class MasStart {
 		addLapButtonToTable();
 		addButtonToTable();
 
-		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("StartNummer");
+		TableColumn<Competitor, Integer> colStartNr = new TableColumn<>("Start Number");
 		colStartNr.setCellValueFactory(new PropertyValueFactory<>("nr"));
 
-		TableColumn<Competitor, String> colName = new TableColumn<>("Namn");
+		TableColumn<Competitor, String> colName = new TableColumn<>("Name");
 		colName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Mellantid");
+		TableColumn<Competitor, Integer> colLapTime = new TableColumn<>("Lap Time");
 		colLapTime.setCellValueFactory(new PropertyValueFactory<>("lapTime"));
 
 		TableColumn<Competitor, Integer> colTime = new TableColumn<>("Tid");
@@ -77,7 +78,10 @@ public class MasStart {
 		table.getColumns().addAll(colStartNr, colName, colLapTime, colTime);
 
 		HBox hBox = new HBox(20);
-		hBox.getChildren().addAll(startBtn, stopBtn, cM);
+		HBox buttons = new HBox(30);
+		buttons.getChildren().addAll(startBtn, stopBtn);
+		buttons.setAlignment(Pos.CENTER);
+		hBox.getChildren().addAll(buttons, mainTime);
 
 		VBox vBox = new VBox(20);
 		vBox.getChildren().addAll(hBox, table);
@@ -105,7 +109,7 @@ public class MasStart {
 	}
 
 	private void addButtonToTable() {
-		TableColumn<Competitor, Void> colBtn = new TableColumn("Start/Stopp");
+		TableColumn<Competitor, Void> colBtn = new TableColumn("");
 
 		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
 			@Override
@@ -119,8 +123,8 @@ public class MasStart {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
-							cM.setTimerTid();
-							competitor.setStopTime(cM.getTimerTid());
+							mainTime.setTimerTid();
+							competitor.setStopTime(mainTime.getTimerTid());
 							System.out.println(competitor.getStopTime());
 							table.refresh();		
 					
@@ -149,7 +153,7 @@ public class MasStart {
 	}
 
 	private void addLapButtonToTable() {
-		TableColumn<Competitor, Void> colLap = new TableColumn("Mellantid");
+		TableColumn<Competitor, Void> colLap = new TableColumn("");
 
 		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
 			@Override
@@ -163,8 +167,8 @@ public class MasStart {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
-							cM.setTimerTid();
-							competitor.setLapTime(cM.getTimerTid());
+							mainTime.setTimerTid();
+							competitor.setLapTime(mainTime.getTimerTid());
 							System.out.println(competitor.getStopTime());
 							table.refresh();
 
