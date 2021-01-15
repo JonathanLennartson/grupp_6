@@ -139,11 +139,8 @@ public class MasStart {
 						btn.setOnAction((ActionEvent event) -> {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
-							System.out.println("selectedData: " + competitor.getName());
-
 							mainTime.setTimerTid();
 							competitor.setStopTime(mainTime.getTimerTid());
-							System.out.println(competitor.getStopTime());
 							table.refresh();
 							competitor.setStopButtonPressed(true);
 
@@ -184,8 +181,7 @@ public class MasStart {
 						btnLap.setOnAction((ActionEvent event) -> {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
-							System.out.println("selectedData: " + competitor.getName());
-
+							
 							if (competitor.getStopButtonPressed() == false
 									&& competitor.getLapButtonPressed() == false) {
 
