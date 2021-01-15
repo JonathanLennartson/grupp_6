@@ -1,5 +1,7 @@
 package skidor;
 
+import java.util.ArrayList;
+
 public class PursuitStartTime {
 
 	public void setTotalTimeSec() {
@@ -16,15 +18,15 @@ public class PursuitStartTime {
 
 	}
 
-	public void setPursuitStartTime() {
+	public void setPursuitStartTime(ArrayList<Competitor> competitorList) {
 
 		double time;
 		int index = -1;
 
-		for (Competitor competitor : XMLhandler.list) {
+		for (Competitor competitor : competitorList) {
 
 			try {
-				time = (competitor.getTotalTimeSec() - XMLhandler.list.get(index).getTotalTimeSec()) * 1000;
+				time = (competitor.getTotalTimeSec() - competitorList.get(index).getTotalTimeSec()) * 1000;
 			} catch (IndexOutOfBoundsException e) {
 				time = 0;
 			}

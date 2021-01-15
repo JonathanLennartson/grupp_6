@@ -1,6 +1,7 @@
 package skidor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +33,6 @@ public class MasStart {
 		stage.setTitle("Skidtävling!!");
 		stage.setWidth(600);
 		stage.setHeight(600);
-
 		
 		Button startBtn = new Button("Start Race");
 		startBtn.setOnAction(e -> mainTime.start());
@@ -41,15 +41,17 @@ public class MasStart {
 		
 		stopBtn.setOnAction(e -> {
 			mainTime.stopp();
-			mainTime.reset();
+			mainTime.reset();			
+			
 			for (Competitor competitor : tvObservableList) {
-				competitorList.add(competitor);
-			}			
+				competitorList.add(competitor);			
+			}		
 			
 			PursuitStartTime pST = new PursuitStartTime();							
-			pST.setTotalTimeSec();
-			pST.setPursuitStartTime();
-			
+			pST.setTotalTimeSec();			
+			Collections.sort(competitorList, Competitor.totalTimeSecComparator);
+			pST.setPursuitStartTime(competitorList);
+
 			XMLhandler.encode(competitorList);			
 			
 		});		

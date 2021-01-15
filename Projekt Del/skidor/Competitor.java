@@ -1,5 +1,7 @@
 package skidor;
 
+import java.util.Comparator;
+
 import javafx.beans.property.SimpleStringProperty;
 
 public class Competitor {
@@ -76,5 +78,13 @@ public class Competitor {
 	public void setHeadStart(Long headStart) {
 		this.headStart = headStart;
 	}
+	
+	public static Comparator<Competitor> totalTimeSecComparator = new Comparator<Competitor>() {
+		
+		public int compare(Competitor c1, Competitor c2) {
+			return c1.getTotalTimeSec().compareTo(c2.getTotalTimeSec());
+		}		
+		
+	};
 
 }
