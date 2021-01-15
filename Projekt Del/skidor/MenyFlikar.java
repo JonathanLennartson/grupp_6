@@ -25,18 +25,16 @@ public class MenyFlikar  {
 			menu.setPromptText("Choose Race Type");
 
 			selectMenuButton = new Button("Choose");
-			selectMenuButton.setOnAction(e -> menuButtonClicked());
-			addSkiier = new Button("Add Skiier");
-			addSkiier.setOnAction(e -> addSkiierClicked());
+			selectMenuButton.setOnAction(e -> menuButtonClicked());			
 
 			StackPane layout = new StackPane();
 			HBox menuLayout = new HBox(40);
 
-			menuLayout.getChildren().addAll(menu, selectMenuButton, addSkiier);
+			menuLayout.getChildren().addAll(menu, selectMenuButton);
 			menuLayout.setAlignment(Pos.CENTER);
 			layout.getChildren().add(menuLayout);
 
-			mainScene = new Scene(layout, 500, 150);
+			mainScene = new Scene(layout, 400, 150);
 			mainScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 			window.setOnCloseRequest(e -> {
 				e.consume();
@@ -54,12 +52,7 @@ public class MenyFlikar  {
 			window.close();
 		}
 	}
-	
-	private static void addSkiierClicked() {
-		AddSkiier skiier = new AddSkiier();
-		skiier.show();
-	}
-
+		
 	private static void menuButtonClicked() {
 		menu.getValue();
 		if (menu.getValue() == "Individual Start") {
