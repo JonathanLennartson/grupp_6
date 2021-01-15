@@ -24,7 +24,6 @@ public class IndividuellStart {
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
 	private Thread startTimers;
-
 	private Boolean startButtonBoolean = true;
 
 	private ChronoMeter mainTime;
@@ -35,7 +34,7 @@ public class IndividuellStart {
 		Stage stage = new Stage();
 		mainTime = new ChronoMeter();
 
-		stage.setTitle("Individual Start!");
+		stage.setTitle("Individual Start");
 		stage.setWidth(600);
 		stage.setHeight(600);
 
@@ -47,10 +46,12 @@ public class IndividuellStart {
 				task = new Task<Void>() {
 
 					public Void call() throws InterruptedException {
-						for (Competitor comp : XMLhandler.list) {
-							comp.startTimer();
-							Thread.sleep(5000);
-							;
+						for (Competitor competitor : XMLhandler.list) {
+							competitor.setStopButtonPressed(false);
+							competitor.setLapButtonPressed(false);
+							competitor.startTimer();
+							Thread.sleep(1000);
+
 						}
 						task.cancel();
 						return null;
@@ -139,6 +140,7 @@ public class IndividuellStart {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
 							competitor.stopTimer();
+							competitor.setStopButtonPressed(true);
 
 						});
 					}
@@ -165,6 +167,7 @@ public class IndividuellStart {
 
 	private void addLapButtonToTable() {
 		TableColumn<Competitor, Void> colLap = new TableColumn("");
+		
 
 		Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>> cellFactory = new Callback<TableColumn<Competitor, Void>, TableCell<Competitor, Void>>() {
 			@Override
@@ -173,14 +176,19 @@ public class IndividuellStart {
 
 					private final Button btnLap = new Button("Lap");
 
-					{
-						btnLap.setOnAction((ActionEvent event) -> {
-							Competitor competitor = getTableView().getItems().get(getIndex());
-							System.out.println("selectedData: " + competitor);
-							competitor.setLapTime(competitor.getTimer());
-							table.refresh();
-
+					{ 
+						btnLap.setOnAction((ActionEvent event) -> {														
+															
+								Competitor competitor = getTableView().getItems().get(getIndex());
+								System.out.println("selectedData: " + competitor);
+								if (competitor.getStopButtonPressed() == false && competitor.getLapButtonPressed() == false) {
+									competitor.setLapTime(competitor.getTimer());
+									table.refresh();
+									competitor.setLapButtonPressed(true);
+								}												
+							
 						});
+						
 					}
 
 					@Override
@@ -193,9 +201,10 @@ public class IndividuellStart {
 						}
 					}
 				};
-				return cell;
-			}
+				return cell;				
+			}			
 		};
+		
 
 		colLap.setCellFactory(cellFactory);
 

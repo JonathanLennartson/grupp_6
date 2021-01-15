@@ -19,10 +19,11 @@ public class PursuitStartTime {
 	}
 
 	public void setPursuitStartTime(ArrayList<Competitor> competitorList) {
-
+		
 		double time;
 		int index = -1;
-
+		int startNumber = 1;
+		
 		for (Competitor competitor : competitorList) {
 
 			try {
@@ -33,6 +34,9 @@ public class PursuitStartTime {
 
 			index++;
 			competitor.setHeadStart(Double.valueOf(time).longValue());
+			
+			competitor.setNr(startNumber);
+			startNumber++;
 
 		}
 

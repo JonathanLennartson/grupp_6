@@ -23,45 +23,54 @@ public class MasStart {
 
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
+	private Boolean startButtonBoolean = true;
+	private Boolean stopButtonBoolean = true;
+
 	ChronoMeter mainTime;
 	ArrayList<Competitor> competitorList = new ArrayList<Competitor>();
+
 	public void show() {
 
 		Stage stage = new Stage();
 		mainTime = new ChronoMeter();
 
-		stage.setTitle("Skidtävling!!");
+		stage.setTitle("Mass Start");
 		stage.setWidth(600);
 		stage.setHeight(600);
-		
+
 		Button startBtn = new Button("Start Race");
-		startBtn.setOnAction(e -> mainTime.start());
+		startBtn.setOnAction(e -> {
+			if (startButtonBoolean == true) {
+				for (Competitor competitor : tvObservableList) {
+					competitor.setStopButtonPressed(false);
+					competitor.setLapButtonPressed(false);
+				}
+
+				mainTime.start();
+			}
+			startButtonBoolean = false;
+		});
 
 		Button stopBtn = new Button("Stop Race");
-		
+
 		stopBtn.setOnAction(e -> {
 			mainTime.stopp();
-			mainTime.reset();			
-			
-			for (Competitor competitor : tvObservableList) {
-				competitorList.add(competitor);			
-			}		
-			
-			PursuitStartTime pST = new PursuitStartTime();							
-			pST.setTotalTimeSec();			
-			Collections.sort(competitorList, Competitor.totalTimeSecComparator);
-			pST.setPursuitStartTime(competitorList);
-			
-			int startNumber = 1;
-			for (Competitor competitor : competitorList) {
-				competitor.setNr(startNumber);
-				startNumber++;
-			}			
+			mainTime.reset();
 
-			XMLhandler.encode(competitorList);			
-			
-		});		
-		
+			for (Competitor competitor : tvObservableList) {
+				competitorList.add(competitor);
+			}
+
+			if (stopButtonBoolean == true) {
+				PursuitStartTime pursuitStartTimeHandler = new PursuitStartTime();
+				pursuitStartTimeHandler.setTotalTimeSec();
+				Collections.sort(competitorList, Competitor.totalTimeSecComparator);
+				pursuitStartTimeHandler.setPursuitStartTime(competitorList);
+
+				XMLhandler.encode(competitorList);
+			}
+			stopButtonBoolean = false;
+		});
 
 		setTableappearance();
 
@@ -113,7 +122,7 @@ public class MasStart {
 			competitor.setLapTime("00:00.000");
 			competitor.setStopTime("00:00.000");
 		}
-		
+
 	}
 
 	private void addButtonToTable() {
@@ -131,11 +140,12 @@ public class MasStart {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
+
 							mainTime.setTimerTid();
 							competitor.setStopTime(mainTime.getTimerTid());
 							System.out.println(competitor.getStopTime());
-							table.refresh();		
-					
+							table.refresh();
+							competitor.setStopButtonPressed(true);
 
 						});
 					}
@@ -175,10 +185,16 @@ public class MasStart {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor.getName());
-							mainTime.setTimerTid();
-							competitor.setLapTime(mainTime.getTimerTid());
-							System.out.println(competitor.getStopTime());
-							table.refresh();
+
+							if (competitor.getStopButtonPressed() == false
+									&& competitor.getLapButtonPressed() == false) {
+
+								mainTime.setTimerTid();
+								competitor.setLapTime(mainTime.getTimerTid());
+								table.refresh();
+								competitor.setLapButtonPressed(true);
+								table.refresh();
+							}
 
 						});
 					}

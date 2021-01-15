@@ -6,159 +6,8 @@
     <void property="headStart">
      <long>0</long>
     </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Tatiana Sorina</string>
-    </void>
-    <void property="nr">
-     <int>1</int>
-    </void>
-    <void property="stopTime">
-     <string>00:01.437</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>1.437</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>1457</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Yulia Stupak</string>
-    </void>
-    <void property="nr">
-     <int>2</int>
-    </void>
-    <void property="stopTime">
-     <string>00:02.894</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>2.894</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>500</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Ebba Andersson</string>
-    </void>
-    <void property="nr">
-     <int>3</int>
-    </void>
-    <void property="stopTime">
-     <string>00:03.394</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>3.394</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>590</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Therese Johaug</string>
-    </void>
-    <void property="nr">
-     <int>4</int>
-    </void>
-    <void property="stopTime">
-     <string>00:03.985</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>3.985</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>1540</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Frida Karlsson</string>
-    </void>
-    <void property="nr">
-     <int>5</int>
-    </void>
-    <void property="stopTime">
-     <string>00:05.525</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>5.525</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>602</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Natalia Nepryaeva</string>
-    </void>
-    <void property="nr">
-     <int>6</int>
-    </void>
-    <void property="stopTime">
-     <string>00:06.128</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>6.128</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>549</long>
-    </void>
-    <void property="lapTime">
-     <string>00:00.000</string>
-    </void>
-    <void property="name">
-     <string>Nadine Fähndrich</string>
-    </void>
-    <void property="nr">
-     <int>7</int>
-    </void>
-    <void property="stopTime">
-     <string>00:06.678</string>
-    </void>
-    <void property="totalTimeSec">
-     <double>6.678</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="skidor.Competitor">
-    <void property="headStart">
-     <long>735</long>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
     </void>
     <void property="lapTime">
      <string>00:00.000</string>
@@ -167,20 +16,138 @@
      <string>Rosie Brennan</string>
     </void>
     <void property="nr">
-     <int>8</int>
+     <int>1</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
     </void>
     <void property="stopTime">
-     <string>00:07.413</string>
+     <string>00:00.000</string>
     </void>
     <void property="totalTimeSec">
-     <double>7.413</double>
+     <double>0.0</double>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="skidor.Competitor">
     <void property="headStart">
-     <long>767</long>
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Tatiana Sorina</string>
+    </void>
+    <void property="nr">
+     <int>2</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="stopTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>0.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Therese Johaug</string>
+    </void>
+    <void property="nr">
+     <int>3</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="stopTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>0.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Natalia Nepryaeva</string>
+    </void>
+    <void property="nr">
+     <int>4</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="stopTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>0.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Nadine Fähndrich</string>
+    </void>
+    <void property="nr">
+     <int>5</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="stopTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>0.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
     </void>
     <void property="lapTime">
      <string>00:00.000</string>
@@ -189,20 +156,54 @@
      <string>Anamarija Lampic</string>
     </void>
     <void property="nr">
-     <int>9</int>
+     <int>6</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
     </void>
     <void property="stopTime">
-     <string>00:08.181</string>
+     <string>00:00.000</string>
     </void>
     <void property="totalTimeSec">
-     <double>8.181</double>
+     <double>0.0</double>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="skidor.Competitor">
     <void property="headStart">
-     <long>413</long>
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Ebba Andersson</string>
+    </void>
+    <void property="nr">
+     <int>7</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="stopTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>0.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
     </void>
     <void property="lapTime">
      <string>00:00.000</string>
@@ -211,13 +212,72 @@
      <string>Jessica Diggins</string>
     </void>
     <void property="nr">
-     <int>10</int>
+     <int>8</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
     </void>
     <void property="stopTime">
-     <string>00:08.594</string>
+     <string>00:00.000</string>
     </void>
     <void property="totalTimeSec">
-     <double>8.594</double>
+     <double>0.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Yulia Stupak</string>
+    </void>
+    <void property="nr">
+     <int>9</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="stopTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>0.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="skidor.Competitor">
+    <void property="headStart">
+     <long>0</long>
+    </void>
+    <void property="lapButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="lapTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="name">
+     <string>Frida Karlsson</string>
+    </void>
+    <void property="nr">
+     <int>10</int>
+    </void>
+    <void property="stopButtonPressed">
+     <boolean>false</boolean>
+    </void>
+    <void property="stopTime">
+     <string>00:00.000</string>
+    </void>
+    <void property="totalTimeSec">
+     <double>0.0</double>
     </void>
    </object>
   </void>

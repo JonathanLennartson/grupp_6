@@ -14,6 +14,8 @@ public class Competitor {
 	private Long headStart;
 	private Timer theTimer = new Timer();
 	private SimpleStringProperty timer = theTimer.getTimer();
+	private Boolean stopButtonPressed;
+	private Boolean lapButtonPressed;
 	
 	public int getNr() {
 		return nr;
@@ -79,6 +81,22 @@ public class Competitor {
 		this.headStart = headStart;
 	}
 	
+	public Boolean getStopButtonPressed() {
+		return stopButtonPressed;
+	}
+
+	public void setStopButtonPressed(Boolean stopButtonPressed) {
+		this.stopButtonPressed = stopButtonPressed;
+	}
+
+	public Boolean getLapButtonPressed() {
+		return lapButtonPressed;
+	}
+
+	public void setLapButtonPressed(Boolean lapButtonPressed) {
+		this.lapButtonPressed = lapButtonPressed;
+	}
+
 	public static Comparator<Competitor> totalTimeSecComparator = new Comparator<Competitor>() {
 		
 		public int compare(Competitor c1, Competitor c2) {

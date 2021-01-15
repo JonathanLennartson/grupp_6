@@ -22,7 +22,6 @@ public class JaktStart {
 	private final TableView<Competitor> table = new TableView<>();
 	private final ObservableList<Competitor> tvObservableList = FXCollections.observableArrayList();
 	private Thread startTimers;
-
 	private Boolean startButtonBoolean = true;
 
 	private ChronoMeter mainTime;
@@ -33,7 +32,7 @@ public class JaktStart {
 		Stage stage = new Stage();
 		mainTime = new ChronoMeter();
 
-		stage.setTitle("Pursuit!");
+		stage.setTitle("Pursuit");
 		stage.setWidth(600);
 		stage.setHeight(600);
 
@@ -48,6 +47,8 @@ public class JaktStart {
 					public Void call() throws InterruptedException {
 
 						for (Competitor competitor : XMLhandler.list) {
+							competitor.setStopButtonPressed(false);
+							competitor.setLapButtonPressed(false);
 							Thread.sleep(competitor.getHeadStart());
 							competitor.startTimer();
 
@@ -115,14 +116,11 @@ public class JaktStart {
 	}
 
 	private void fillTableObservableListWithSampleData() {
-		int startNumber = 1;
 		XMLhandler.decode();
 		
 		for (Competitor competitor : XMLhandler.list) {
-			competitor.setNr(startNumber);
-			startNumber++;
-
 			tvObservableList.addAll(competitor);
+			competitor.setLapTime(competitor.getTimer());
 		}
 
 	}
@@ -143,6 +141,7 @@ public class JaktStart {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor);
 							competitor.stopTimer();
+							competitor.setStopButtonPressed(true);
 						});
 					}
 
@@ -180,8 +179,11 @@ public class JaktStart {
 						btnLap.setOnAction((ActionEvent event) -> {
 							Competitor competitor = getTableView().getItems().get(getIndex());
 							System.out.println("selectedData: " + competitor);
-							competitor.setLapTime(competitor.getTimer());
-							table.refresh();
+							if (competitor.getStopButtonPressed() == false && competitor.getLapButtonPressed() == false) {
+								competitor.setLapTime(competitor.getTimer());
+								table.refresh();
+								competitor.setLapButtonPressed(true);
+							}	
 						});
 					}
 
