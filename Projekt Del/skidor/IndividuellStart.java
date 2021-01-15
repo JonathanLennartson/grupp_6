@@ -138,7 +138,6 @@ public class IndividuellStart {
 						btn.setOnAction((ActionEvent event) -> {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
-							System.out.println("selectedData: " + competitor.getName());
 							competitor.stopTimer();
 							competitor.setStopButtonPressed(true);
 
@@ -180,7 +179,6 @@ public class IndividuellStart {
 						btnLap.setOnAction((ActionEvent event) -> {														
 															
 								Competitor competitor = getTableView().getItems().get(getIndex());
-								System.out.println("selectedData: " + competitor);
 								if (competitor.getStopButtonPressed() == false && competitor.getLapButtonPressed() == false) {
 									competitor.setLapTime(competitor.getTimer());
 									table.refresh();

@@ -139,7 +139,6 @@ public class JaktStart {
 						btn.setOnAction((ActionEvent event) -> {
 
 							Competitor competitor = getTableView().getItems().get(getIndex());
-							System.out.println("selectedData: " + competitor);
 							competitor.stopTimer();
 							competitor.setStopButtonPressed(true);
 						});
@@ -178,7 +177,6 @@ public class JaktStart {
 					{
 						btnLap.setOnAction((ActionEvent event) -> {
 							Competitor competitor = getTableView().getItems().get(getIndex());
-							System.out.println("selectedData: " + competitor);
 							if (competitor.getStopButtonPressed() == false && competitor.getLapButtonPressed() == false) {
 								competitor.setLapTime(competitor.getTimer());
 								table.refresh();
