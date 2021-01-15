@@ -115,9 +115,13 @@ public class JaktStart {
 	}
 
 	private void fillTableObservableListWithSampleData() {
-
+		int startNumber = 1;
 		XMLhandler.decode();
+		
 		for (Competitor competitor : XMLhandler.list) {
+			competitor.setNr(startNumber);
+			startNumber++;
+
 			tvObservableList.addAll(competitor);
 		}
 
